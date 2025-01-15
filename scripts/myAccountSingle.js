@@ -18,7 +18,7 @@ if(Object.keys(queryParams).length === 0 || !queryParams){
 if(!userCheck()){
     window.location.href='/login'
 }
-
+userInfoCheck=JSON.parse(userInfoCheck);
 let uid = userInfoCheck.userId;
 let orderId=queryParams.inid
 let txn=queryParams.type
@@ -38,6 +38,7 @@ function makeApiCall(uid, orderNo, txn) {
         order_no: orderNo,
         txn: txn
     };
+    console.log(paramsData,'paramsdata')
 
     const params = new URLSearchParams(paramsData);
 

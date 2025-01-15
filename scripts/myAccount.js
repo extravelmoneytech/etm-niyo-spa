@@ -1,11 +1,13 @@
 if(!userCheck()){
     window.location.href='/login'
 }
-console.log(userInfoCheck,'heyyy');
+
+userInfoCheck=JSON.parse(userInfoCheck);
+console.log(userInfoCheck,'jbb')
 let mobNum = userInfoCheck.mobNum;
 let countryCode = userInfoCheck.countryCode;
 let userId = userInfoCheck.userId;
-console.log(userId, countryCode, mobNum);
+console.log(userId, countryCode, mobNum,'testtt');
 let singleOrderPageFlag=false;
 let paramsData = {
     action: 'user_profile_data',
@@ -14,6 +16,7 @@ let paramsData = {
     country_code: countryCode
 };
 const params = new URLSearchParams(paramsData);
+console.log(paramsData,'params')
 
 // Making the POST request
 loadinggg(true);

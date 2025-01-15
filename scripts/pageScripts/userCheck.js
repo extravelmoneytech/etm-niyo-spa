@@ -9,6 +9,8 @@ console.log(userInfoCheck);
 window.userCheckMain = function () {
     console.log('calledddddbcc')
     const userInfoCheck = localStorage.getItem('userInfo');
+    const myAccountBtns = document.querySelectorAll('.myAccount');
+    const myAccountLink = document.querySelector('#myAccountLink');
 
     if (userInfoCheck) {
         // Parse the JSON string into an object
@@ -19,18 +21,43 @@ window.userCheckMain = function () {
 
         // Iterate over each button and update it
         loginBtns.forEach(element => {
-            element.querySelector('#loginText').textContent = "Logout";
+            // Create a button element to replace the anchor tag
+            const button = document.createElement('button');
+            button.className = element.className; // Copy classes
+            button.classList.add('flex')
+            button.innerHTML = element.innerHTML;
+            button.querySelector('#loginText').textContent = "Logout";
+            // Hide my account buttons
+            myAccountBtns.forEach(btn => {
+                btn.style.display = 'block';
+            });
 
-            // Remove the href attribute
-            element.removeAttribute('href');
-
-            // Add a click event to log out the user
-            element.addEventListener('click', () => {
+            // Add click event for logout
+            button.addEventListener('click', () => {
                 // Clear localStorage
                 localStorage.removeItem('userInfo');
 
+                // Change text to Login
+                button.querySelector('#loginText').textContent = "Login";
                 
+                // Add click event for login redirection
+                button.addEventListener('click', () => {
+                    window.location.href = '/login';
+                });
+
+                // Hide my account buttons
+                myAccountBtns.forEach(btn => {
+                    btn.style.display = 'none';
+                });
+
+                // Update my account link
+                if (myAccountLink) {
+                    myAccountLink.href = '/login';
+                }
             });
+
+            // Replace anchor with button
+            element.parentNode.replaceChild(button, element);
         });
 
         console.log(userInfo, 'userInfo');
@@ -38,14 +65,11 @@ window.userCheckMain = function () {
 
     } else {
         console.log('No userInfo found in localStorage');
-
-        const myAccountBtns = document.querySelectorAll('.myAccount');
-
+        
         myAccountBtns.forEach(element => {
             element.style.display = 'none';
         });
 
-        const myAccountLink = document.querySelector('#myAccountLink');
         if (myAccountLink) {
             myAccountLink.href = '/login';
         }

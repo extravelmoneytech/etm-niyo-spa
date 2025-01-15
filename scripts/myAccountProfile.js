@@ -3,7 +3,8 @@ if(!userCheck()){
 }
 console.log(userInfoCheck,"userInfoCheck");
 // Function to make the API call
-function makeApiCall(uid, orderNo, txn) {
+userInfoCheck=JSON.parse(userInfoCheck);
+function makeApiCall() {
     loadinggg(true)
     
     

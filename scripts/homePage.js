@@ -1,4 +1,4 @@
-let nextPageUrl='/orderv2/Get-Rates'
+let nextPageUrl='/orderv3'
 // Then on the previous page, use this to detect when the page is revisited
 window.addEventListener('pageshow', function(event) {
     if (event.persisted) {

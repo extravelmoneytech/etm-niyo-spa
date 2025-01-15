@@ -120,7 +120,7 @@ $myAccountPage = true;
                     <div class="flex flex-col">
                         <span style="background: var(--Linear, linear-gradient(329deg, #0E51A0 -43.1%, #E31D1C 144.49%));background-clip: text;-webkit-background-clip: text;-webkit-text-fill-color: transparent;" class="text-[#0e51a0] text-base font-medium  leading-normal">Hi,</span>
                         <span class="text-[#0f1728] text-xl font-bold leading-[30px]" id="userName"></span>
-                        <a href="profile/">
+                        <a href="myaccount/profile/">
                             <span class="text-[#0e51a0] text-sm font-medium  leading-[21px]">View Profile</span>
                         </a>
                     </div>
