@@ -18,6 +18,7 @@ include $fold . 'includesv2/head.php';
 
     .bottomSheetMainVisible {
         display: flex;
+        
     }
 
 
@@ -91,6 +92,11 @@ include $fold . 'includesv2/head.php';
     .animate-pulse {
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
+    .no-scroll {
+        overflow: hidden;
+        height: 100vh;
+    }
+
 </style>
 
 <body>
@@ -934,12 +940,20 @@ include $fold . 'includesv2/head.php';
 
             async openBottomSheet(type, mode, rowId = null) {
                 this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
+                
+                const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+                this.elements.bottomSheetMain.style.height = `${viewportHeight}px`;
+                
+                document.body.classList.add('no-scroll'); // Disable background scrolling
+
 
 
                 if (!type) {
                     this.closeBottomSheet();
                     return;
                 }
+                
+                
                 this.currentBottomSheetMode = this.currentBottomSheetMode || null;
                 this.currentBottomSheetType = this.currentBottomSheetType || null;
                 this.currentBottomSheetRowId = this.currentBottomSheetRowId || null;
@@ -948,6 +962,7 @@ include $fold . 'includesv2/head.php';
                     this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
                     setTimeout(() => {
                         document.querySelector('.bottomSheet')?.classList.add('popBottomSheet');
+                        
                     }, 100);
                     return;
                 } else {
@@ -958,7 +973,7 @@ include $fold . 'includesv2/head.php';
                 this.currentBottomSheetRowId = rowId;
 
                 if (mode === 'editProduct') {
-                    this.elements.bottomSheet.style = 'min-height:22rem;'
+                    this.elements.bottomSheet.style = 'height:22rem;'
 
                     this.elements.bottomSheet.innerHTML = `
        
@@ -974,7 +989,7 @@ include $fold . 'includesv2/head.php';
             `;
 
                 } else if (mode === 'addProduct') {
-                    this.elements.bottomSheet.style = 'min-height:30rem;'
+                    this.elements.bottomSheet.style = 'height:30rem;'
 
                     this.elements.bottomSheet.innerHTML = `
        
@@ -996,6 +1011,7 @@ include $fold . 'includesv2/head.php';
                 this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
                 setTimeout(() => {
                     document.querySelector('.bottomSheet')?.classList.add('popBottomSheet');
+                    
                 }, 100);
 
 
@@ -1033,6 +1049,7 @@ include $fold . 'includesv2/head.php';
 
             closeBottomSheet() {
                 const bottomSheet = document.querySelector('.bottomSheet');
+                document.body.classList.remove('no-scroll'); // Disable background scrolling
                 if (bottomSheet) {
                     bottomSheet.classList.remove('popBottomSheet');
                     setTimeout(() => {
