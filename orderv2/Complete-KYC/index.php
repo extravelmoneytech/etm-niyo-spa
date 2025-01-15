@@ -5,7 +5,7 @@
 
 $fold="../../";
 $kycCompletePage = true;
-$title="Complete Kyc";
+$title="Complete KYC";
 include $fold . 'includesv2/head.php';
 
 ?>
@@ -102,7 +102,7 @@ include $fold . 'includesv2/head.php';
                             </div>
         
                             <div class="mt-8">
-                                <span class="text-black text-base font-normal  leading-normal tracking-tight" id="contactSoonText">Our Customer Executive will reach you within <b class="text-primary-blue">60 Minutes</b> for Pending Stock Confirmation.</span>
+                                <span class="text-black text-base font-normal  leading-normal tracking-tight" id="contactSoonText">Our Customer Executive will reach you within <b class="text-primary">60 Minutes</b> for Pending Stock Confirmation.</span>
                             </div>
                             <div class="mt-4">
                                 <p class="text-black/40 text-base font-medium  leading-normal tracking-tight">Forex Order No</p>
@@ -175,11 +175,11 @@ include $fold . 'includesv2/head.php';
                         <div class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6 md:hidden">
                             <div
                                 class=" w-10 aspect-square bg-white rounded-3xl border-2 border-primary-blue flex-col justify-center items-center gap-2.5 inline-flex">
-                                <div><span class="text-primary-blue text-lg font-bold ">5</span><span
+                                <div><span class="text-primary text-lg font-bold ">5</span><span
                                         class="text-black/40 text-base font-medium ">/5</span></div>
                             </div>
                             <div class="text-black text-base font-bold leading-none">Complete KYC</div>
-                            <div class="flex flex-1 shrink gap-2.5 self-stretch my-auto h-0.5 bg-primary-blue basis-4 w-[198px]"
+                            <div class="flex flex-1 shrink gap-2.5 self-stretch my-auto h-0.5 bg-primary basis-4 w-[198px]"
                                 role="progressbar"></div>
                         </div>
     
@@ -202,8 +202,8 @@ include $fold . 'includesv2/head.php';
                                       
                                     </div>
                               
-                                    <div class="uploadBtn self-stretch pl-3 pr-2 py-1 bg-[#0e51a0]/5 rounded justify-center items-center gap-2.5 flex relative cursor-pointer">
-                                      <span class="text-[#0e51a0] text-xs font-semibold leading-[18px]">Upload</span>
+                                    <div class="uploadBtn self-stretch pl-3 pr-2 py-1 bg-primary-5 rounded justify-center items-center gap-2.5 flex relative cursor-pointer">
+                                      <span class="text-primary text-xs font-semibold leading-[18px]">Upload</span>
                                       <input type="file" tag="" class="file_upload absolute border-none outline-none bg-transparent opacity-0 w-full h-full left-0 top-0">
                                     </div>
                               
@@ -219,11 +219,13 @@ include $fold . 'includesv2/head.php';
                               
                                   <div class="flex gap-4 items-center px-2 mt-1 kycExtender">
                                     <span class="text-[#606060] text-xs font-normal leading-[21px]">Sample_Document.PDF</span>
-                                    <a href="" target="_blank" class="preview_link border border-primary-blue rounded-lg  px-[3px] gap-1 flex items-center justify-center">
-                                        <svg fill="#0E51A0" height="17" width="17" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 488.85 488.85" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M244.425,98.725c-93.4,0-178.1,51.1-240.6,134.1c-5.1,6.8-5.1,16.3,0,23.1c62.5,83.1,147.2,134.2,240.6,134.2 s178.1-51.1,240.6-134.1c5.1-6.8,5.1-16.3,0-23.1C422.525,149.825,337.825,98.725,244.425,98.725z M251.125,347.025 c-62,3.9-113.2-47.2-109.3-109.3c3.2-51.2,44.7-92.7,95.9-95.9c62-3.9,113.2,47.2,109.3,109.3 C343.725,302.225,302.225,343.725,251.125,347.025z M248.025,299.625c-33.4,2.1-61-25.4-58.8-58.8c1.7-27.6,24.1-49.9,51.7-51.7 c33.4-2.1,61,25.4,58.8,58.8C297.925,275.625,275.525,297.925,248.025,299.625z"></path> </g> </g></svg>
-                                        <span class="text-[12px] text-primary-blue">View</span>
+                                    <a href="" target="_blank" class="preview_link rounded-lg  px-[3px] gap-1 flex items-center justify-center ml-auto">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 16" fill="none">
+                                        <path d="M23.0136 7.77219C22.9817 7.69906 22.2017 5.96938 20.4599 4.2275C18.8436 2.61313 16.0667 0.6875 11.9999 0.6875C7.93299 0.6875 5.15611 2.61313 3.53986 4.2275C1.79799 5.96938 1.01799 7.69625 0.986113 7.77219C0.954062 7.84419 0.9375 7.92212 0.9375 8.00094C0.9375 8.07975 0.954062 8.15768 0.986113 8.22969C1.01799 8.30187 1.79799 10.0316 3.53986 11.7734C5.15611 13.3878 7.93299 15.3125 11.9999 15.3125C16.0667 15.3125 18.8436 13.3878 20.4599 11.7734C22.2017 10.0316 22.9817 8.30469 23.0136 8.22969C23.0457 8.15768 23.0622 8.07975 23.0622 8.00094C23.0622 7.92212 23.0457 7.84419 23.0136 7.77219ZM11.9999 14.1875C9.05799 14.1875 6.48924 13.1169 4.36393 11.0066C3.473 10.1211 2.71908 9.10781 2.12705 8C2.71891 6.89237 3.47285 5.87932 4.36393 4.99438C6.48924 2.88313 9.05799 1.8125 11.9999 1.8125C14.9417 1.8125 17.5105 2.88313 19.6358 4.99438C20.5269 5.87932 21.2808 6.89237 21.8727 8C21.2755 9.14469 18.2811 14.1875 11.9999 14.1875ZM11.9999 3.6875C11.1469 3.6875 10.3132 3.94042 9.60397 4.41429C8.89478 4.88815 8.34204 5.56167 8.01563 6.34968C7.68923 7.13768 7.60383 8.00478 7.77023 8.84133C7.93663 9.67787 8.34735 10.4463 8.95047 11.0494C9.55358 11.6525 10.322 12.0632 11.1585 12.2296C11.9951 12.396 12.8622 12.3106 13.6502 11.9842C14.4382 11.6578 15.1117 11.1051 15.5856 10.3959C16.0594 9.68671 16.3124 8.85293 16.3124 8C16.3109 6.85671 15.856 5.76067 15.0476 4.95225C14.2392 4.14382 13.1432 3.68899 11.9999 3.6875ZM11.9999 11.1875C11.3694 11.1875 10.7532 11.0006 10.229 10.6503C9.7048 10.3001 9.29625 9.80224 9.055 9.2198C8.81374 8.63736 8.75062 7.99646 8.87361 7.37815C8.9966 6.75984 9.30018 6.19188 9.74596 5.7461C10.1917 5.30032 10.7597 4.99674 11.378 4.87375C11.9963 4.75076 12.6372 4.81388 13.2197 5.05513C13.8021 5.29639 14.2999 5.70494 14.6502 6.22912C15.0004 6.7533 15.1874 7.36957 15.1874 8C15.1874 8.84538 14.8515 9.65613 14.2538 10.2539C13.656 10.8517 12.8452 11.1875 11.9999 11.1875Z" fill="black"/>
+                                    </svg>
+                                        <span class="text-[12px] text-primary">View</span>
                                     </a>
-                                    <svg class="deleteIcon cursor-pointer ml-auto" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <svg class="deleteIcon cursor-pointer ml-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
                                         <path d="M20.25 4.6875H16.3125V3.75C16.3125 3.20299 16.0952 2.67839 15.7084 2.29159C15.3216 1.9048 14.797 1.6875 14.25 1.6875H9.75C9.20299 1.6875 8.67839 1.9048 8.29159 2.29159C7.9048 2.67839 7.6875 3.20299 7.6875 3.75V4.6875H3.75C3.60082 4.6875 3.45774 4.74676 3.35225 4.85225C3.24676 4.95774 3.1875 5.10082 3.1875 5.25C3.1875 5.39918 3.24676 5.54226 3.35225 5.64775C3.45774 5.75324 3.60082 5.8125 3.75 5.8125H4.6875V19.5C4.6875 19.8481 4.82578 20.1819 5.07192 20.4281C5.31806 20.6742 5.6519 20.8125 6 20.8125H18C18.3481 20.8125 18.6819 20.6742 18.9281 20.4281C19.1742 20.1819 19.3125 19.8481 19.3125 19.5V5.8125H20.25C20.3992 5.8125 20.5423 5.75324 20.6477 5.64775C20.7532 5.54226 20.8125 5.39918 20.8125 5.25C20.8125 5.10082 20.7532 4.95774 20.6477 4.85225C20.5423 4.74676 20.3992 4.6875 20.25 4.6875ZM8.8125 3.75C8.8125 3.50136 8.91127 3.2629 9.08709 3.08709C9.2629 2.91127 9.50136 2.8125 9.75 2.8125H14.25C14.4986 2.8125 14.7371 2.91127 14.9129 3.08709C15.0887 3.2629 15.1875 3.50136 15.1875 3.75V4.6875H8.8125V3.75ZM18.1875 19.5C18.1875 19.5497 18.1677 19.5974 18.1326 19.6326C18.0974 19.6677 18.0497 19.6875 18 19.6875H6C5.95027 19.6875 5.90258 19.6677 5.86742 19.6326C5.83225 19.5974 5.8125 19.5497 5.8125 19.5V5.8125H18.1875V19.5ZM10.3125 9.75V15.75C10.3125 15.8992 10.2532 16.0423 10.1477 16.1477C10.0423 16.2532 9.89918 16.3125 9.75 16.3125C9.60082 16.3125 9.45774 16.2532 9.35225 16.1477C9.24676 16.0423 9.1875 15.8992 9.1875 15.75V9.75C9.1875 9.60082 9.24676 9.45774 9.35225 9.35225C9.45774 9.24676 9.60082 9.1875 9.75 9.1875C9.89918 9.1875 10.0423 9.24676 10.1477 9.35225C10.2532 9.45774 10.3125 9.60082 10.3125 9.75ZM14.8125 9.75V15.75C14.8125 15.8992 14.7532 16.0423 14.6477 16.1477C14.5423 16.2532 14.3992 16.3125 14.25 16.3125C14.1008 16.3125 13.9577 16.2532 13.8523 16.1477C13.7468 16.0423 13.6875 15.8992 13.6875 15.75V9.75C13.6875 9.60082 13.7468 9.45774 13.8523 9.35225C13.9577 9.24676 14.1008 9.1875 14.25 9.1875C14.3992 9.1875 14.5423 9.24676 14.6477 9.35225C14.7532 9.45774 14.8125 9.60082 14.8125 9.75Z" fill="black"/>
                                     </svg>
                                     
@@ -255,7 +257,7 @@ include $fold . 'includesv2/head.php';
                         
     
                         <!--<div-->
-                        <!--            class="w-full h-12 px-2 py-3 bg-primary-blue rounded-lg justify-center items-center gap-1 inline-flex mt-20 mb-4">-->
+                        <!--            class="w-full h-12 px-2 py-3 bg-primary rounded-lg justify-center items-center gap-1 inline-flex mt-20 mb-4">-->
                         <!--            <div class="text-white text-sm font-bold">View Order</div>-->
                         <!--            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"-->
                         <!--                fill="none">-->

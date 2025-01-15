@@ -1,8 +1,8 @@
-<div class="w-full md:w-5/6  z-10 h-fit"
-                            style="background: linear-gradient(157deg, #E31D1C -4.27%, #0E51A0 101.01%), #FFF;border-radius: 16px;padding: 3px;box-shadow: 0px 4px 100px 0px rgba(14, 81, 160, 0.20);">
+<div class="w-full md:w-5/6  z-10 h-fit bg-primary-80"
+                            style="border-radius: 16px;padding: 3px;box-shadow: 0px 4px 100px 0px rgba(14, 81, 160, 0.20);">
                             <div class="h-fit flex flex-col bg-white p-3 py-6 sm:py-5" style="border-radius: 12px;">
 
-                                <div class="toggleBar flex w-full gap-10 sm:gap-15 h-fit">
+                                <div class="toggleBar flex w-full gap-10 sm:gap-15 h-fit hidden">
                                     <div class="toggleItem <?php echo ($widgetType == 'fx') ? 'activeToggle' : ''; ?> flex border-b-2 p-1 sm:p-2 pb-4 gap-1 items-end cursor-pointer"
                                         id="forexToggle">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
@@ -40,7 +40,7 @@
                                 
 
                                 <div class="forexSpace <?php echo ($widgetType == 'fx') ? 'activeSpace' : 'hiddenSpace'; ?>">
-                                    <div class="mt-5">
+                                    <div >
                                         <span
                                                     class="text-gray-500 text-sm sm:text-mediumFont  font-medium">Choose
                                                     your Travel Destination
@@ -115,14 +115,14 @@
                                     </div> -->
 
                                     <div class="flex flex-col mt-4">
-                                        <div class="flex flex-col sm:flex-row gap-2">
+                                        <div class="flex flex-col  gap-2">
 
 
 
 
 
 
-                                            <div class="flex flex-col gap-1 w-full sm:w-2/4">
+                                            <div class="flex flex-col gap-1 w-full">
                                                 <span
                                                     class="text-gray-500 text-sm sm:text-mediumFont  font-medium">Choose
                                                     Product
@@ -195,7 +195,7 @@
 
 
 
-                                            <div class="flex flex-col gap-1 w-full sm:w-2/4">
+                                            <div class="flex flex-col gap-1 w-full">
                                                 <span
                                                     class="text-gray-500 text-sm sm:text-mediumFont  font-medium">Choose
                                                     Currency</span>
@@ -306,11 +306,11 @@
                                         <div class=" mt-3  gap-1 text-sm ml-auto">
                                             <span class=" font-medium text-black text-opacity-70">is
                                                 approximately</span>
-                                            <span class=" text-primary-blue font-bold approxVal">00,000
+                                            <span class=" text-primary font-bold approxVal">00,000
                                                 INR</span>
                                         </div>
-                                        <div id="getRatesButton" city="<?php echo $city; ?>"
-                                            class="bg-primary-blue flex gap-1 justify-center items-center py-4 rounded-lg mt-6  select-none cursor-pointer">
+                                        <div id="getRatesButton"
+                                            class="bg-button-gradient flex gap-1 justify-center items-center py-4 rounded-lg mt-6  select-none cursor-pointer">
                                             <span class="text-white text-base font-semibold">Get Best Rates</span> <svg
                                                 width="25" height="25" viewBox="0 0 30 30" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -439,7 +439,7 @@
                                             INR</span>
                                     </div>
                                     <div id="getRatesButtonMt"
-                                        class="bg-primary-blue flex gap-1 justify-center items-center py-4 rounded-lg mt-6  select-none cursor-pointer">
+                                        class="bg-button-gradient flex gap-1 justify-center items-center py-4 rounded-lg mt-6  select-none cursor-pointer">
                                         <span class="text-white text-base font-semibold">Get Best Rates</span> <svg
                                             width="25" height="25" viewBox="0 0 30 30" fill="none"
                                             xmlns="http://www.w3.org/2000/svg">

@@ -2,7 +2,7 @@
                 <h2 class=" text-black text-3xl font-bold">Frequently Asked Questions</h2>
                 <div class="faqContainer mt-8 flex flex-col gap-4">
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?
@@ -18,7 +18,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?
@@ -66,7 +66,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?
@@ -82,7 +82,7 @@
                         </div>
                     </div>
 
-                    <div class="border border-black/10 p-4 rounded-xl">
+                    <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">
                         <div class="faqHeader flex justify-between items-start customMd:items-center">
                             <h2 class=" text-black text-base font-semibold font-['Plus Jakarta Sans'] leading-[30px]">
                                 Here are some testimonials from our user after using Extravelmoney.com to manage their business expenses. ?

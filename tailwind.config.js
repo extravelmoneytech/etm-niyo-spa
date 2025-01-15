@@ -1,15 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './**/*.{html,js,php}',   // Scan HTML, JS, and PHP files
-    './src/**/*.{html,js,php}'  // Include src folder and subdirectories, adjust as needed
+    // Include everything except node_modules
+    './**/!(node_modules)/**/*.{html,js,php}',
+    // Include root level files
+    './*.{html,js,php}'
   ],
   theme: {
     extend: {
       colors: {
-        primary: {
-          blue: '#0E51A0',
-          red: '#E31D1C'
+        'primary': {
+          DEFAULT: 'var(--color-primary)',
+          80: 'var(--color-primary-80)',
+          60: 'var(--color-primary-60)',
+          40: 'var(--color-primary-40)',
+          20: 'var(--color-primary-20)',
+          10: 'var(--color-primary-10)',
+          5: 'var(--color-primary-5)',
         }
       },
       fontSize: {
@@ -21,19 +28,20 @@ module.exports = {
       screens: {
         md: '950px',
         customMd: '830px',
-        customLg: '1150px'
+        customLg: '1080px'
       },
       maxWidth: {
         'customMax': '103rem'
       },
       backgroundImage: {
-        'custom-gradient': 'linear-gradient(138.25deg, rgba(14, 81, 160, 0.05) -6.91%, rgba(227, 29, 28, 0.05) 106.82%)'
-      }
+        'button-gradient': 'var(--button-gradient)',
+        'text-gradient': 'var(--text-gradient)',
+      },
     }
   },
   variants: {
     extend: {
-      fontSize: ['responsive', 'important'], 
+      fontSize: ['responsive', 'important'],
     }
   },
   plugins: [],

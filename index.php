@@ -7,20 +7,19 @@ $description="Get the best exchange rates on currency, forex cards, and money tr
 $sub=0; $page=1; $city=0; $curpage=0; $fold=""; 
 $ogurl="https://www.extravelmoney.com";
 $ogtype="website";
-$defaultProduct='currency';
+
 
 $indexPage = true;
 $widgetType='fx';
 $defaultCountry="us";
-$city="";
-
+$defaultProduct="currency";
     include $fold . 'includesv2/head.php';
 ?>
 
 
 
 
-<body>
+<body >
     <div class="flex flex-col items-center justify-center relative bg-white">
         <div class="chooseCityOverlay absolute top-0 left-0 w-full h-[100vh] bg-white customMd:bg-black/30  customMd:bg-opacity-60  z-20"
             style="backdrop-filter: blur(7px)">
@@ -56,7 +55,7 @@ $city="";
                     <div id="searchspin" style="display: none;">Loading...</div>
                     <div id="results" class="popularCityContainer flex flex-wrap gap-3 mt-3 text-[#777777]"></div>
                     <button id="citySelect" disabled
-                        class="h-12 px-2 py-3 bg-primary-blue rounded-lg justify-center items-center gap-1 inline-flex mt-6 select-none cursor-pointer opacity-60">
+                        class="h-12 px-2 py-3 bg-button-gradient rounded-lg justify-center items-center gap-1 inline-flex mt-6 select-none cursor-pointer opacity-60">
                         <span class="text-white text-sm font-bold">View Best Rates in your City</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path
@@ -210,7 +209,7 @@ $city="";
             <!-- hero section contents start -->
 
             
-            <section class="mainSection  w-full flex justify-center items-center  relative">
+            <section class="mainSection  w-full flex justify-center items-center  relative mb-20 customMd:mb-48">
                 <div
                     class=" flex w-full flex-col customMd:flex-row heroMain px-5 sm:px-12 md:px-24 py-5 relative justify-center  sm:justify-between customMd:pt-16 md:pt-16">
                     <div class="w-full md:w-6/12 md:pr-4 widgetContainer">
@@ -218,7 +217,7 @@ $city="";
                         <!--    <br>Extra simple, <span class="text-primary-blue">e</span><span class="text-primary-red">x</span>tra-->
                         <!--    savings-->
                         <!--</h1>-->
-                        <h1 class="text-[1.9rem] md:text-headingCustom text-black font-bold tracking-tight">For<span class="text-primary-blue">e</span><span class="text-primary-red">x</span> & Money Transfers..
+                        <h1 class="text-[1.9rem] md:text-headingCustom text-primary font-bold tracking-tight">For<span class="text-primary-blue">e</span><span class="text-primary-red">x</span> & Money Transfers..
                             <br>Extra simple, <span class="text-primary-blue">e</span><span class="text-primary-red">x</span>tra
                             savings
                         </h1>
@@ -239,7 +238,7 @@ $city="";
                                             <path d="M19.8282 21.204H22.6242M21.2262 22.602V19.806M38.8417 5.31279H41.6376M40.2396 6.7107V3.91479M21.4259 38.5583L14.1802 46.6476C13.8348 47.0333 13.2421 47.0659 12.8564 46.7205L10.7945 44.8735C10.4088 44.528 10.3761 43.9354 10.7216 43.5497L17.9673 35.4604C18.3127 35.0747 18.9054 35.042 19.2911 35.3875L21.353 37.2345C21.7387 37.5799 21.7714 38.1727 21.4259 38.5583Z" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                           </svg>
     
-                                          <p class="text-xl w-full font-bold" style="word-wrap: break-word;background: linear-gradient(329deg, #0E51A0 -43.1%, #E31D1C 144.49%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Save More</p>
+                                          <p class="text-xl w-full font-bold bg-text-gradient" style="word-wrap: break-word;-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Save More</p>
                                           <span class="text-black/60 text-sm font-normal  leading-normal">5%+ better than <br/>market rates.</span>
     
     
@@ -258,7 +257,7 @@ $city="";
                                             <path d="M13.8982 41.1551C16.2668 41.1551 18.1869 39.2349 18.1869 36.8663C18.1869 34.4977 16.2668 32.5775 13.8982 32.5775C11.5295 32.5775 9.60938 34.4977 9.60938 36.8663C9.60938 39.2349 11.5295 41.1551 13.8982 41.1551Z" stroke="#0E51A0" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                                           </svg>
     
-                                          <p class="text-xl w-full font-bold" style="word-wrap: break-word;background: linear-gradient(329deg, #0E51A0 -43.1%, #E31D1C 144.49%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Fast Credit</p>
+                                          <p class="text-xl w-full font-bold bg-text-gradient" style="word-wrap: break-word;-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Fast Credit</p>
                                           <span class="text-black/60 text-sm font-normal  leading-normal">Credit/Delivery in <br/>48 working hours.</span>
     
     
@@ -284,7 +283,7 @@ $city="";
                                           </svg>
     
     
-                                          <p class="text-xl w-full font-bold" style="word-wrap: break-word;background: linear-gradient(329deg, #0E51A0 -43.1%, #E31D1C 144.49%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Expert Help</p>
+                                          <p class="text-xl w-full font-bold bg-text-gradient" style="word-wrap: break-word;-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Expert Help</p>
                                           <span class="text-black/60 text-sm font-normal  leading-normal">Professional support,<br/>every step</span>
     
     
@@ -296,7 +295,7 @@ $city="";
                             </div>
 
 
-                         <?php include $fold .'includesv2/reviewScore.php'; ?>
+                         <?php include $fold .'includesv2/rbiStrip.php'; ?>
                         
                     </div>
                     <div
@@ -306,7 +305,7 @@ $city="";
                         <?php include $fold .'includesv2/widget.php'; ?>
                         
                         
-                        <?php include $fold .'includesv2/sellCurrency.php'; ?>
+                       
                         
                         
                     </div>
@@ -358,56 +357,17 @@ $city="";
 
 
 
-            <?php 
-            include $fold . 'includesv2/bankingPartners.php';
-            ?>
-
-            <?php 
-            include $fold . 'includesv2/extravelmoneyNumbers.php';
-            ?>
-
-            <?php 
-            include $fold . 'includesv2/extravelMoneyServices.php';
-            ?>
-
-            <?php 
-            include $fold . 'includesv2/testimonial.php';
-            ?>
-
-            <?php 
-            include $fold . 'includesv2/howItWorks.php';
-            ?>
-
-            <?php 
-            include $fold . 'includesv2/callBackSection.php';
-            ?>
-
-
+            
 
             <?php 
             include $fold . 'includesv2/features.php';
             ?>
 
 
-            
-
-            <?php 
-            include $fold . 'includesv2/press.php';
-            
-            ?>
-            
-            
-
-
-
-
-
-
-
 
 
              <?php 
-            // include $fold . 'includesv2/faq.php';
+            include $fold . 'includesv2/faq.php';
             ?> 
 
             <div class="mt-12 customMd:mt-24 h-1"></div>
@@ -415,9 +375,7 @@ $city="";
         </div>
 
     </div>
-    <?php 
-    include $fold . 'includesv2/footer.php';
-    ?>
+   
     
     
     

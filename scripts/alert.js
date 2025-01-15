@@ -3,7 +3,8 @@ function insertAlertBelowElement(targetElement, alertContent) {
     // Check if an alert already exists below the target element
     const existingAlert = targetElement.nextElementSibling;
     if (existingAlert && existingAlert.classList.contains('custom-alert')) {
-        return; // Exit the function if an alert is already present
+        scrollToElement(existingAlert);
+        return;
     }
 
     // Create a span element for the alert
@@ -20,6 +21,38 @@ function insertAlertBelowElement(targetElement, alertContent) {
 
     // Insert the alert element directly below the target element
     targetElement.insertAdjacentElement('afterend', alertSpan);
+
+    // Scroll to the newly created alert
+    scrollToElement(alertSpan);
+}
+
+function scrollToElement(element) {
+    // Get the element's position relative to the viewport
+    const rect = element.getBoundingClientRect();
+    
+    // Calculate the absolute position including scroll
+    const absoluteTop = rect.top + window.pageYOffset;
+    
+    // Calculate offset (considering fixed headers or other elements)
+    const offset = 100; // Adjust this value based on your header height or desired offset
+    
+    // Calculate final scroll position
+    const scrollPosition = absoluteTop - offset;
+    
+    // Perform the scroll with smooth behavior
+    window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+    });
+
+    // Add a brief highlight animation to draw attention
+    element.style.transition = 'background-color 0.3s ease';
+    element.style.backgroundColor = 'rgba(252, 74, 50, 0.1)';
+    
+    // Remove the highlight after animation
+    setTimeout(() => {
+        element.style.backgroundColor = 'transparent';
+    }, 1000);
 }
 
 // Function to remove the alert below a target element

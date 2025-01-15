@@ -67,7 +67,7 @@ countryCode = countryCode.replace(/^\+/, '');
     (async () => {
         loadinggg(true)
         try {
-            const apiUrl = 'https://mvc.extravelmoney.com/api-etm/';
+            
             const params = new URLSearchParams({
                 action: 'user_login_otp',
                 mode:otpMode,
@@ -123,7 +123,7 @@ function verifyOtp() {
     (async () => {
         loadinggg(true)
         try {
-            const apiUrl = 'https://mvc.extravelmoney.com/api-etm/';
+            
             const params = new URLSearchParams({
                 action: 'user_login_validate',
                 otp: fetchOtp,

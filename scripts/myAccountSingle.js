@@ -30,7 +30,7 @@ makeApiCall(uid,orderId,txn);
 function makeApiCall(uid, orderNo, txn) {
     loadinggg(true)
     
-    const apiUrl = 'https://mvc.extravelmoney.com/api-etm/'; // Replace with your actual API endpoint
+     
 
     const paramsData = {
         action: 'user_profile_order_data',
@@ -161,7 +161,7 @@ function createKycUploaders(documentObject) {
 }
 
 async function deleteFileFromApi(data) {
-    const apiUrl = 'https://mvc.extravelmoney.com/api-etm/';
+    
     // Construct the parameters for the API call
     const params = new URLSearchParams({
         action: 'kyc_delete',
@@ -361,7 +361,7 @@ async function uploadFileToApi(data) {
     formData.append("token", token)
     formData.append('order_no', orderId)
 
-    const response = await fetch('https://mvc.extravelmoney.com/api-etm/', {
+    const response = await fetch(apiUrl, {
         method: 'POST',
         body: formData,
     });

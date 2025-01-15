@@ -17,7 +17,7 @@ const params = new URLSearchParams(paramsData);
 
 // Making the POST request
 loadinggg(true);
-fetch('https://mvc.extravelmoney.com/api-etm/', {
+fetch(apiUrl, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
@@ -247,7 +247,7 @@ function addViewButtonListeners() {
             
             if (uid && orderNo && txn) {
                 // Make the API call with these values
-                window.location.href=`order/?inid=${orderNo}&type=${txn}`
+                window.location.href=`myaccount/order/?inid=${orderNo}&type=${txn}`
                 
             } else {
                 console.error('Missing required values for API call:', { uid, orderNo, txn });

@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    /* Base color variables */
+    --color-primary: #0DA486;
+    --color-primary-80: #0DA486CC; /* 80% opacity */
+    --color-primary-60: #0DA48699; /* 60% opacity */
+    --color-primary-40: #0DA48666; /* 40% opacity */
+    --color-primary-20: #0DA48633; /* 20% opacity */
+    --color-primary-10: #0DA4861A; /* 10% opacity */
+    --color-primary-5: #0DA4860D;  /* 5% opacity */
+  
+    /* Gradient variables */
+    --button-gradient: linear-gradient(0deg, #0E1226 0%, #0E1226 100%);
+    --text-gradient: linear-gradient(84deg, var(--color-primary) -26.8%, var(--color-primary-60) 74.05%);
+  }

@@ -1,14 +1,12 @@
-<section class="mt-[6rem] customMd:mt-32 customMd:px-12 md:px-24 pb-8 flex-col gap-[20rem] customMd:gap-12 2xl:gap-32 flex">
+<section class="customMd:px-12 md:px-24 pb-8 flex-col  flex customMd:mt-52">
                 
 
-                <div class="w-full justify-between items-center gap-2 customMd:gap-6 flex ">
-
-                    <div class="h-1 w-full   relative bg-[#0e51a0]"></div>
-                    <p class="text-[#040815] text-center text-2xl font-extrabold w-full leading-[72px] text-nowrap">We Provide You,<span class="text-[#0e51a0]">E</span><span class="text-[#e31d1c] ">x</span>tra Care</p>
-                    <div class="h-1 w-full  relative bg-[#e31d1c]"></div>
+                <div class="w-full flex flex-col gap-2 mb-80 customMd:mb-0 px-5 sm:0">
+                <p class="text-[#040815] text-[1.9rem] md:text-headingCustom font-extrabold leading-[60px]">We Provide You, Extra Care</p>
+                <p class="text-[#90a3bf] text-base sm:text-mediumFont md:text-base font-normal  leading-[30px]">Here are some testimonials from our user after using Extravelmoney.com to manage their business  expenses.</p>   
                 </div>
                 
-                <div class="flex flex-col customMd:flex-row justify-center w-full items-center relative customMd:justify-between  mt-8">
+                <div class="flex flex-col customMd:flex-row justify-center w-full items-center relative customMd:justify-between mt-8 customMd:mt-32">
                     <div class="flex flex-col gap-4 customMd:gap-10 w-full customMd:w-[25%] 2xl:w-[32%] min-w-[21rem] z-10 px-4 customMd:px-0 bg-white customMd:bg-transparent pt-8">
 
                         <div class="w-full group  px-4 py-6 bg-white rounded-3xl border border-black/10  hover:bg-[#20bc73] hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out   inline-flex flex-col justify-center items-center">
@@ -29,23 +27,7 @@
                             </div>
                         </div>
 
-                        <div class="w-full group  px-4 py-6 bg-white rounded-3xl border border-black/10  hover:bg-[#EB8F00] hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out   inline-flex flex-col justify-center items-center">
-                            <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-2 inline-flex">
-                                <div class="w-14 h-14 origin-top-left rounded-full bg-[#EB8F00] group-hover:bg-white duration-300 flex justify-center items-center gap-2.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-white duration-300 group-hover:fill-[#EB8F00]" width="35" height="35" viewBox="0 0 40 40" fill="none">
-                                        <path d="M6.28325 18.4637C6.33058 18.2633 6.42666 18.0778 6.56295 17.9235C6.69924 17.7692 6.87152 17.651 7.0645 17.5793L16.0661 14.2027L13.7754 2.74491C13.7236 2.47869 13.7597 2.20283 13.8784 1.95894C13.997 1.71506 14.1918 1.51639 14.4333 1.39291C14.6748 1.26944 14.9499 1.22785 15.2171 1.27444C15.4843 1.32102 15.729 1.45325 15.9145 1.65116L33.4145 20.4012C33.5566 20.5509 33.6595 20.7336 33.7138 20.9328C33.7681 21.132 33.7722 21.3415 33.7258 21.5427C33.6794 21.7439 33.5838 21.9305 33.4477 22.0857C33.3116 22.241 33.1391 22.3601 32.9457 22.4324L23.9411 25.809L26.2254 37.2543C26.2773 37.5205 26.2412 37.7964 26.1225 38.0403C26.0038 38.2841 25.8091 38.4828 25.5676 38.6063C25.3261 38.7298 25.051 38.7713 24.7838 38.7248C24.5166 38.6782 24.2718 38.546 24.0864 38.348L6.58637 19.598C6.44681 19.4482 6.34618 19.2665 6.29333 19.0687C6.24047 18.8709 6.23701 18.6631 6.28325 18.4637ZM22.9114 33.4371L21.2754 25.2527C21.2169 24.9625 21.2633 24.6608 21.4064 24.4016C21.5494 24.1423 21.7799 23.9423 22.0567 23.8371L30.3129 20.7355L17.0911 6.56991L18.7254 14.7543C18.784 15.0446 18.7376 15.3462 18.5945 15.6054C18.4514 15.8647 18.221 16.0647 17.9442 16.1699L9.69419 19.2637L22.9114 33.4371Z" />
-                                      </svg>
-                                </div>
-                                <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-                                    <h2 class="self-stretch text-xl font-bold leading-[28.80px]">
-                                        Fast Processing
-                                    </h2>
-                                    <p class="self-stretch text-sm font-normal leading-[21px]">
-                                        We understand your commitments and that is why we strive to complete every transaction, the same day of placing the order.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="w-full group  px-4 py-6 bg-white rounded-3xl border border-black/10  hover:bg-[#0E51A0] hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out   inline-flex flex-col justify-center items-center">
                             <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-2 inline-flex">
@@ -87,23 +69,7 @@
                             </div>
                         </div>
 
-                        <div class="w-full group  px-4 py-6 bg-white rounded-3xl border border-black/10  hover:bg-[#EB8F00] hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out   inline-flex flex-col justify-center items-center">
-                            <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-2 inline-flex">
-                                <div class="w-14 h-14 origin-top-left rounded-full bg-[#EB8F00] group-hover:bg-white duration-300 flex justify-center items-center gap-2.5">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="fill-white duration-300 group-hover:fill-[#EB8F00]" width="35" height="35" viewBox="0 0 40 40" fill="none">
-                                        <path d="M7.5 12.5H12.5V8.75C12.5 6.76088 13.2902 4.85322 14.6967 3.4467C16.1032 2.04018 18.0109 1.25 20 1.25C21.9891 1.25 23.8968 2.04018 25.3033 3.4467C26.7098 4.85322 27.5 6.76088 27.5 8.75V12.5H32.5C33.163 12.5 33.7989 12.7634 34.2678 13.2322C34.7366 13.7011 35 14.337 35 15V32.5C35 33.163 34.7366 33.7989 34.2678 34.2678C33.7989 34.7366 33.163 35 32.5 35H7.5C6.83696 35 6.20107 34.7366 5.73223 34.2678C5.26339 33.7989 5 33.163 5 32.5V15C5 14.337 5.26339 13.7011 5.73223 13.2322C6.20107 12.7634 6.83696 12.5 7.5 12.5ZM25 8.75C25 7.42392 24.4732 6.15215 23.5355 5.21447C22.5979 4.27678 21.3261 3.75 20 3.75C18.6739 3.75 17.4021 4.27678 16.4645 5.21447C15.5268 6.15215 15 7.42392 15 8.75V12.5H25V8.75ZM7.5 32.5H32.5V15H7.5V32.5Z" />
-                                      </svg>
-                                </div>
-                                <div class="self-stretch flex-col justify-start items-start gap-2 flex">
-                                    <h2 class="self-stretch text-xl font-bold leading-[28.80px]">
-                                        Lock Exchange Rates
-                                    </h2>
-                                    <p class="self-stretch text-sm font-normal leading-[21px]">
-                                        Forex exchange rates can fluctuate dramatically even on the same day. At ExTravelMoney, you can freeze the rate for up to 3 days!
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="w-full group  px-4 py-6 bg-white rounded-3xl border border-black/10  hover:bg-[#0E51A0] hover:text-white hover:border-transparent transition-colors duration-300 ease-in-out   inline-flex flex-col justify-center items-center">
                             <div class="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-2 inline-flex">
@@ -124,7 +90,7 @@
                         </div>
                     </div>
                     <div class="absolute top-0 left-0 w-full h-full flex items-start customMd:items-center justify-center">
-                        <div class="p-[6px] rounded-[20px] bg-custom-gradient absolute top-16 customMd:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  flex items-center justify-center w-[18rem] h-[35rem]" style="background: linear-gradient(157deg, #E31D1C -4.27%, #0E51A0 101.01%), #FFF;">
+                        <div class="p-[6px] rounded-[20px] bg-custom-gradient absolute top-16 customMd:top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  flex items-center justify-center w-[18rem] h-[35rem] bg-primary-80">
                             <div class="flex rounded-[14px] h-full items-start customMd:items-center pt-10 customMd:pt-0 justify-center bg-white w-full">
                             <img class="w-40" src="<?php echo $fold . 'public/images/logo/ETM_logo_icon.png'; ?>" alt="ETM logo icon">
 

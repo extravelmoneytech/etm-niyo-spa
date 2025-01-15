@@ -6,7 +6,7 @@ console.log(userInfoCheck,"userInfoCheck");
 function makeApiCall(uid, orderNo, txn) {
     loadinggg(true)
     
-    const apiUrl = 'https://mvc.extravelmoney.com/api-etm/'; 
+    
 
     const paramsData = {
         action: 'get_user_personal_data',
@@ -158,7 +158,7 @@ let emailContainer = document.querySelector('#emailId')
     };
     const params = new URLSearchParams(payload);
     console.log(payload)
-    const apiUrl = 'https://mvc.extravelmoney.com/api-etm/';
+    
     fetch(apiUrl, {
         method: 'POST',
         headers: {

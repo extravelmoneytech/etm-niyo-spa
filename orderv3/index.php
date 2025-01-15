@@ -22,8 +22,8 @@ include $fold . 'includesv2/head.php';
             include $fold . 'includesv2/header.php';
             ?>
 
-            <div class="progressBar mb-0 md:mb-8">
-                <div class="w-full justify-start items-center progressBar hidden md:inline-flex mt-8">
+            <div class="progressBar mb-0 md:mb-8 hidden">
+                <div class="w-full justify-start items-center progressBar hidden mt-8">
                     <div class="grow shrink basis-0 h-0.5  bg-[#20bc73]"></div>
                     <div class="flex flex-col relative">
                         <div
@@ -35,29 +35,16 @@ include $fold . 'includesv2/head.php';
                             Rates</span>
                     </div>
 
-                    <div class="forexContainer grow shrink basis-0 h-0.5 bg-[#eaeef4]"></div>
-                    <div class="forexContainer flex flex-col relative">
+                    <div class="grow shrink basis-0 h-0.5 bg-[#20bc73] border border-[#eaeef4]"></div>
+                    <div class="flex flex-col relative">
                         <div
-                            class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#eaeef4] flex-col justify-center items-center gap-2.5 inline-flex">
+                            class="w-12 h-12 p-2.5 bg-white rounded-[30px]  border-2 border-[#eaeef4] flex-col justify-center items-center gap-2.5 inline-flex">
                             <span class="text-black text-xl font-bold ">2</span>
                         </div>
                         <span
                             class="text-black text-opacity-60 text-lg font-normal  absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Choose
                             Provider</span>
                     </div>
-
-                    <div class="moneyT grow shrink basis-0 h-0.5 bg-[#20bc73]"></div>
-                    <div class="moneyT flex flex-col relative">
-                        <div
-                            class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] flex-col justify-center items-center gap-2.5 inline-flex">
-                            <span class="text-black text-xl font-bold ">2</span>
-                        </div>
-                        <span
-                            class="text-black text-opacity-60 text-lg font-normal  absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Choose
-                            Provider</span>
-                    </div>
-
-
                     <div class="grow shrink basis-0 h-0.5 bg-[#20bc73] border border-[#eaeef4]"></div>
                     <div class="flex flex-col relative">
                         <div
@@ -95,22 +82,16 @@ include $fold . 'includesv2/head.php';
             </div>
 
             <div class="progressContainer px-5 sm:px-12 md:px-16">
-                <div
-                    class="hidden w-full p-2.5 bg-primary-blue/10 rounded-lg justify-center items-center gap-2.5 inline-flex md:hidden">
-                    <div class="text-primary-blue text-base font-bold" id="productNameIdentifier">Currency Exchange
-                    </div>
-                </div>
 
-                <div class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6 md:hidden">
+                <div id="progressBarMain"
+                    class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6">
                     <div
-                        class=" w-10 aspect-square bg-white rounded-3xl border-2 border-primary-blue flex-col justify-center items-center gap-2.5 inline-flex">
-                        <div>
-                            <span class="text-primary-blue text-lg font-bold ">1</span>
-                            <span class="text-black/40 text-base font-medium ">/5</span>
-                        </div>
+                        class=" w-10 aspect-square bg-white rounded-3xl border-2 border-primary flex-col justify-center items-center gap-2.5 inline-flex">
+                        <div><span class="text-primary text-lg font-bold " id="numberElement">1</span><span
+                                class="text-black/40 text-base font-medium " id="">/5</span></div>
                     </div>
-                    <div class="text-black text-base font-bold leading-none">Get Rates</div>
-                    <div class="flex flex-1 shrink gap-2.5 self-stretch my-auto h-0.5 bg-primary-blue basis-4 w-[198px]"
+                    <div class="text-black text-base font-bold leading-none" id="stageNameElement">Get Rates</div>
+                    <div class="flex flex-1 shrink gap-2.5 self-stretch my-auto h-0.5 border border-primary basis-4 w-[198px]"
                         role="progressbar"></div>
                 </div>
             </div>
@@ -190,6 +171,41 @@ include $fold . 'includesv2/head.php';
             .popBottomSheet {
                 transform: translateY(0%);
             }
+        }
+
+        /* Progress bar animations */
+        [role="progressbar"] {
+            transition: width 300ms ease-in-out;
+        }
+
+        .text-black.text-base.font-bold {
+            transition: opacity 200ms ease-in-out;
+        }
+
+        .fade-out {
+            opacity: 0;
+        }
+
+        /* Optional: Add animation for the number transition */
+        .text-lg.font-bold {
+            transition: transform 200ms ease-in-out;
+        }
+
+        .text-lg.font-bold.animate {
+            transform: scale(1.1);
+        }
+
+        /* Add to your CSS */
+        .grow.shrink.basis-0.h-0\\.5 {
+            transition: all 400ms ease-in-out;
+        }
+
+        .rounded-\[30px\] {
+            transition: all 400ms ease-in-out;
+        }
+
+        span.text-lg {
+            transition: all 400ms ease-in-out;
         }
     </style>
 
@@ -772,7 +788,7 @@ include $fold . 'includesv2/head.php';
                         token: AppState.getState('token', 'mainState'),
                         userip: userIP
                     });
-                
+
 
                     const response = await fetch(apiUrl, {
                         method: 'POST',
@@ -1197,6 +1213,7 @@ include $fold . 'includesv2/head.php';
 
                 try {
                     if (AppState.nextBtnState.status === CONSTANTS.ORDER_STATES.GET_RATES) {
+
                         // Hide current content
                         const getRatesContainer = document.querySelector('#getRatesContainer');
                         if (getRatesContainer) getRatesContainer.style.display = 'none';
@@ -1209,6 +1226,7 @@ include $fold . 'includesv2/head.php';
 
                         const sectionContainer = document.getElementById('sectionContainer');
                         sectionContainer.appendChild(deliverySection);
+                        ProgressManager.updateProgress('CHOOSE_PROVIDER');
 
                         // Update app state
                         AppState.nextBtnState.status = CONSTANTS.ORDER_STATES.DELIVERY_DETAILS;
@@ -1230,7 +1248,7 @@ include $fold . 'includesv2/head.php';
                         AppState.setState('ddLandMark', ddLandMark, 'deliveryState');
 
 
-                        if (!branch) {
+                        if (!branch || branch === 'Select') {
                             insertAlertBelowElement(document.querySelector('#cityDropDown'), 'Select a branch')
                             return
                         } else {
@@ -1256,8 +1274,9 @@ include $fold . 'includesv2/head.php';
                         }
 
                         let status = await APIService.updateDeliveryDetails();
-                        if (status) {
 
+                        if (status) {
+                            ProgressManager.updateProgress('CONTACT_DETAILS');
                             // Hide current content
                             const deliveryDetailsContainer = document.querySelector('#deliveryDetailsSection');
                             if (deliveryDetailsContainer) deliveryDetailsContainer.style.display = 'none';
@@ -1301,7 +1320,9 @@ include $fold . 'includesv2/head.php';
 
                         let response = await APIService.updateContactDetails()
 
+
                         if (response.status) {
+                            ProgressManager.updateProgress('REVIEW_PAYMENT');
                             // Hide current content
                             const contactDetailsSection = document.querySelector('#contactDetailsSection');
                             if (contactDetailsSection) contactDetailsSection.style.display = 'none';
@@ -1321,14 +1342,14 @@ include $fold . 'includesv2/head.php';
                         return
                     }
                     if (AppState.nextBtnState.status === CONSTANTS.ORDER_STATES.REVIEW_PAYMENT) {
-                        let data= await APIService.placeOrder();
+                        let data = await APIService.placeOrder();
                         console.log(data)
                         if (data.status) {
                             sessionStorage.setItem('orderId', data.orderID);
-                            sessionStorage.setItem('customerName',AppState.contactData.name);
+                            sessionStorage.setItem('customerName', AppState.contactData.name);
                             window.location.href = '/orderv2/Complete-KYC';
                         }
-                        
+
                         return
                     }
 
@@ -1398,7 +1419,7 @@ include $fold . 'includesv2/head.php';
                     });
 
 
-                    document.getElementById('radio1').addEventListener('click', function() {
+                    document.getElementById('radio1').addEventListener('click', function () {
                         AppState.deliveryState.doorDelivery = 1;
                         UIManager.toggleRadio(this, 'radio2');
 
@@ -1406,7 +1427,7 @@ include $fold . 'includesv2/head.php';
                         // document.querySelector('#cartContentStorePickup').style.display = 'none'
                     });
 
-                    document.getElementById('radio2').addEventListener('click', function() {
+                    document.getElementById('radio2').addEventListener('click', function () {
                         AppState.deliveryState.doorDelivery = 0;
                         UIManager.toggleRadio(this, 'radio1');
                         // document.querySelector('#cartContent').style.display = 'none'
@@ -1523,7 +1544,7 @@ include $fold . 'includesv2/head.php';
                 docs.forEach((item, index) => {
                     let kyc = document.createElement('p');
                     kyc.className = 'text-black text-sm font-normal'
-                    kyc.textContent = `${index+1}. ${item}`
+                    kyc.textContent = `${index + 1}. ${item}`
                     documentContainer.appendChild(kyc)
                 })
             },
@@ -1730,7 +1751,7 @@ include $fold . 'includesv2/head.php';
                 currentInput.value = currentInput.value.replace(/\D/g, '').slice(0, 1);
 
                 if (currentInput.value) {
-                    currentInput.style.backgroundColor = 'rgba(14, 81, 160, 1)';
+                    currentInput.style.backgroundColor = '#0DA486';
 
                     if (index < this.otpInputs.length - 1) {
                         this.otpInputs[index + 1].focus();
@@ -1827,7 +1848,7 @@ include $fold . 'includesv2/head.php';
                 this.whatsappOtpSendDiv.addEventListener('click', () => {
                     this.handleSendOtp('wa')
                 })
-                this.mobNumberInput.addEventListener('keydown', function(event) {
+                this.mobNumberInput.addEventListener('keydown', function (event) {
                     if (event.key === 'Enter') {
                         event.preventDefault();
                         loginManager.handleSendOtp('wa')
@@ -1854,7 +1875,7 @@ include $fold . 'includesv2/head.php';
                     this.sendOtpContainer.style.display = 'flex';
                     this.verifyOtpContainer.style.display = 'none';
                 })
-                this.resendBtn.addEventListener('click', function() {
+                this.resendBtn.addEventListener('click', function () {
 
                     if (loginManager.isResendEnabled) { // Check if resend is enabled
 
@@ -1944,7 +1965,8 @@ include $fold . 'includesv2/head.php';
                     localStorage.setItem('userInfo', JSON.stringify(userInfo));
 
 
-                    loginManager.closeOtpWidget()
+                    loginManager.closeOtpWidget();
+                    window.userCheckMain()
                     UIManager.handleNextBtn()
                 } else {
                     insertAlertBelowElement(this.otpContainer, 'Incorrect OTP');
@@ -1978,7 +2000,69 @@ include $fold . 'includesv2/head.php';
                 }, 1000); // Run this function every 1 second (1000ms)
             }
 
+        }
+        const ProgressManager = {
+            stages: {
+                GET_RATES: { step: 1, name: "Get Rates" },
+                CHOOSE_PROVIDER: { step: 2, name: "Choose Provider" },
+                CONTACT_DETAILS: { step: 3, name: "Contact Details" },
+                REVIEW_PAYMENT: { step: 4, name: "Review & Payment" },
+                COMPLETE_KYC: { step: 5, name: "Complete KYC" }
+            },
+
+            updateProgress(stage) {
+                const stageInfo = this.stages[stage];
+                if (!stageInfo) return;
+
+                // Update mobile progress
+                this.updateMobileProgress(stageInfo);
+            },
+
+            updateMobileProgress(stageInfo) {
+                const progressBar = document.querySelector('#progressBarMain');
+                if (!progressBar) return;
+
+                const numberElement = progressBar.querySelector('#numberElement');
+                const stageNameElement = progressBar.querySelector('#stageNameElement');
+                const progressTrack = progressBar.querySelector('[role="progressbar"]');
+
+                // Animate number
+                let currentNumber = parseInt(numberElement.textContent);
+                this.animateNumber(currentNumber, stageInfo.step, numberElement);
+
+                // Update stage name with fade effect
+                stageNameElement.style.opacity = '0';
+                setTimeout(() => {
+                    stageNameElement.textContent = stageInfo.name;
+                    stageNameElement.style.opacity = '1';
+                }, 200);
+
+                // Animate progress bar width
+                const percentage = ((stageInfo.step - 1) / 4) * 100;
+                progressTrack.style.transition = 'width 100ms ease-in-out';
+                progressTrack.style.width = `${percentage}%`;
+            },
+
+            animateNumber(start, end, element) {
+                if (start === end) return;
+
+                const step = start < end ? 1 : -1;
+                let current = start;
+
+                const animate = () => {
+                    current += step;
+                    element.textContent = current;
+
+                    if ((step > 0 && current < end) || (step < 0 && current > end)) {
+                        setTimeout(animate, 200);
+                    }
+                };
+
+                animate();
+            }
         };
+
+
 
 
 
