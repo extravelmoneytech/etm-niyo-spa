@@ -11,22 +11,18 @@ window.userCheckMain = function () {
     const userInfoCheck = localStorage.getItem('userInfo');
     const myAccountBtns = document.querySelectorAll('.myAccount');
     const myAccountLink = document.querySelector('#myAccountLink');
-
+    const loginBtns = document.querySelectorAll('.loginBtn');
     if (userInfoCheck) {
         // Parse the JSON string into an object
         const userInfo = JSON.parse(userInfoCheck);
 
         // Select all elements with the class '.loginBtn'
-        const loginBtns = document.querySelectorAll('.loginBtn');
+       
 
         // Iterate over each button and update it
         loginBtns.forEach(element => {
             // Create a button element to replace the anchor tag
-            const button = document.createElement('button');
-            button.className = element.className; // Copy classes
-            button.classList.add('flex')
-            button.innerHTML = element.innerHTML;
-            button.querySelector('#loginText').textContent = "Logout";
+            element.style.display='none'
             // Hide my account buttons
             myAccountBtns.forEach(btn => {
                 btn.style.display = 'block';
@@ -70,9 +66,9 @@ window.userCheckMain = function () {
             element.style.display = 'none';
         });
 
-        if (myAccountLink) {
-            myAccountLink.href = '/login';
-        }
+        loginBtns.forEach(element => {
+            element.style.display='block'
+        })
 
         return false;
     }

@@ -92,8 +92,33 @@ body {
   color: black;
 
 }
-
+.selectedTick{
+  opacity: 0;
+  transition: 0.1s;
+}
 .selectedRadio {
+  border-color: var(--color-primary);
+}
+.svgContainer{
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.10);
+  transition: 0.1;
+}
+.svgContainer svg{
+  fill: black;
+  transition: 0.1;
+}
+.selectedRadio .selectedTick{
+  opacity: 1;
+}
+.selectedRadio .svgContainer{
+  background-color: rgba(13, 164, 134, 0.1);
+}
+.selectedRadio .svgContainer svg{
+  fill: #0da486;
+}
+
+.selectedRadioSummary{
   background-color: var(--color-primary);
   color: white;
 }
@@ -102,11 +127,11 @@ body {
   display: none;
 }
 
-.selectedRadio .checkedIcon {
+.selectedRadioSummary .checkedIcon {
   display: block;
 }
 
-.selectedRadio .uncheckedIcon {
+.selectedRadioSummary .uncheckedIcon {
   display: none;
 }
 

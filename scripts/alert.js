@@ -11,7 +11,7 @@ function insertAlertBelowElement(targetElement, alertContent) {
     const alertSpan = document.createElement('span');
 
     // Set the classes and styles for the alert based on your template
-    alertSpan.classList.add('text-[#fc4a32]', 'text-base', 'font-medium', 'leading-normal');
+    alertSpan.classList.add('text-[#fc4a32]', 'text-sm', 'font-medium', 'leading-normal');
 
     // Add a custom class to identify the alert for future removal
     alertSpan.classList.add('custom-alert');

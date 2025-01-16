@@ -1,5 +1,5 @@
-<section class="mt-16 px-5 sm:px-12 md:px-24 pb-8">
-                <h2 class=" text-black text-3xl font-bold">Frequently Asked Questions</h2>
+<section class="mt-16 px-5 pb-8">
+                <h2 class=" text-black text-2xl font-bold">Frequently Asked Questions</h2>
                 <div class="faqContainer mt-8 flex flex-col gap-4">
 
                     <div class="border border-primary-5 bg-primary-5 p-4 rounded-xl">

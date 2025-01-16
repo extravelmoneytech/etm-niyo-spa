@@ -12,13 +12,6 @@ console.log(apiUrl,'apiUrl')
 
 
 function openChooseCityWidget() {
-    
-    if (productType === 'mt') {
-    document.querySelector('.chooseCityWidget').querySelector('h2').textContent = "Enter Sender's Location in India";
-}
-if (productType === 'fx') {
-    document.querySelector('.chooseCityWidget').querySelector('h2').textContent = "Enter your Location";
-}
 
     // Scroll to the top of the page
     window.scrollTo(0, 0);
@@ -39,6 +32,10 @@ function closeChooseCityWidget() {
     document.querySelector('.chooseCityOverlay').style.display = 'none';
     document.querySelector('body').classList.remove('snipContainer');
 }
+
+document.querySelector('#backBtnWidget').addEventListener('click',()=>{
+    closeChooseCityWidget()
+})
 
 
 
@@ -280,7 +277,7 @@ function updateApproxValue(data) {
 
 
     // Format and update the approximate value
-    approxVal.textContent = formatIndianCurrency(approxAmnt.toFixed(0)) + ' INR';
+    approxVal.textContent ='₹ '+ formatIndianCurrency(approxAmnt.toFixed(0));
 }
 
 
@@ -452,9 +449,8 @@ async function getToken(paramsData) {
 
 document.querySelector('#getRatesButton').addEventListener('click', async (e) => {
     
-    
 
-
+    document.querySelector('#getRatesButton').style.opacity='0.5'
     productType = 'fx';
     sessionStorage.setItem('productPage', 'fx');
 
@@ -543,6 +539,8 @@ console.log(paramsData)
             openChooseCityWidget()
         }
     }
+    document.querySelector('#getRatesButton').style.opacity='1'
+
     
 
 });
@@ -642,6 +640,7 @@ document.querySelector('#getRatesButtonMt').addEventListener('click', () => {
 
 
 document.querySelector('#citySelect').addEventListener('click', () => {
+    document.querySelector('#citySelect').style.opacity=0.5
 
     let selectedCityName = null;
     let resultsContainer = document.querySelector('#results');
@@ -675,6 +674,7 @@ document.querySelector('#citySelect').addEventListener('click', () => {
         window.location.href = nextPageUrl;
 
     }
+    document.querySelector('#citySelect').opacity='1'
 
 
 })
@@ -993,7 +993,7 @@ function updateApproxValueMt(data) {
 
 
         
-        approxVal.textContent = formatIndianCurrency(limitedAmount) + ' INR';
+        approxVal.textContent ='₹ '+  formatIndianCurrency(limitedAmount);
     }
 }
 

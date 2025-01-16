@@ -18,7 +18,7 @@ include $fold . 'includesv2/head.php';
 
     .bottomSheetMainVisible {
         display: flex;
-        
+
     }
 
 
@@ -92,15 +92,15 @@ include $fold . 'includesv2/head.php';
     .animate-pulse {
         animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
+
     .no-scroll {
         overflow: hidden;
         height: 100vh;
     }
-
 </style>
 
-<body>
-    <div class="flex flex-col items-center justify-center" id="containerWholeMain">
+<body class="flex justify-center">
+    <div class="w-full flex flex-col items-center justify-center max-w-[800px]" id="containerWholeMain">
         <div class="w-full chooseCityOverlayMain  relative" style="max-width: 103rem;">
 
             <?php
@@ -108,12 +108,12 @@ include $fold . 'includesv2/head.php';
             include $fold . 'includesv2/header.php';
             ?>
 
-            <div id="backBtn" class="px-5 sm:px-12 md:px-16 mt-2">
+            <div id="backBtn" class="px-5  mt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <path d="M27.9998 15.9999C27.9998 16.2652 27.8945 16.5195 27.7069 16.7071C27.5194 16.8946 27.265 16.9999 26.9998 16.9999H7.41356L14.7073 24.2924C14.8002 24.3854 14.8739 24.4957 14.9242 24.6171C14.9745 24.7384 15.0004 24.8686 15.0004 24.9999C15.0004 25.1313 14.9745 25.2614 14.9242 25.3828C14.8739 25.5042 14.8002 25.6145 14.7073 25.7074C14.6144 25.8004 14.5041 25.8741 14.3827 25.9243C14.2613 25.9746 14.1312 26.0005 13.9998 26.0005C13.8684 26.0005 13.7383 25.9746 13.6169 25.9243C13.4955 25.8741 13.3852 25.8004 13.2923 25.7074L4.29231 16.7074C4.19933 16.6146 4.12557 16.5043 4.07525 16.3829C4.02493 16.2615 3.99902 16.1314 3.99902 15.9999C3.99902 15.8685 4.02493 15.7384 4.07525 15.617C4.12557 15.4956 4.19933 15.3853 4.29231 15.2924L13.2923 6.29245C13.4799 6.1048 13.7344 5.99939 13.9998 5.99939C14.2652 5.99939 14.5197 6.1048 14.7073 6.29245C14.895 6.48009 15.0004 6.73458 15.0004 6.99995C15.0004 7.26531 14.895 7.5198 14.7073 7.70745L7.41356 14.9999H26.9998C27.265 14.9999 27.5194 15.1053 27.7069 15.2928C27.8945 15.4804 27.9998 15.7347 27.9998 15.9999Z" fill="black" />
                 </svg>
             </div>
-            <div class="progressContainer px-5 sm:px-12 md:px-16">
+            <div class="progressContainer px-5">
 
                 <div id="progressBarMain"
                     class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6">
@@ -130,7 +130,7 @@ include $fold . 'includesv2/head.php';
 
 
 
-            <section class="md:mt-12" id="templateContainer">
+            <section class="mt-4" id="templateContainer">
 
 
             </section>
@@ -847,6 +847,13 @@ include $fold . 'includesv2/head.php';
             setupMoneyTransferListeners() {
 
             },
+            handleProductAddBtnVisibility(val) {
+                if (!val) {
+                    this.elements.addCurrencyBtn.style.display = 'none'
+                } else {
+                    this.elements.addCurrencyBtn.style.display = 'inline-flex'
+                }
+            },
             setupAddBottomSheetListeners(type) {
                 const closeButton = document.querySelector('#closeBottomSheet');
                 const addProductBtn = document.querySelector('#addProductBtn');
@@ -940,10 +947,10 @@ include $fold . 'includesv2/head.php';
 
             async openBottomSheet(type, mode, rowId = null) {
                 this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
-                
+
                 const viewportHeight = window.visualViewport ? window.visualViewport.height : window.innerHeight;
                 this.elements.bottomSheetMain.style.height = `${viewportHeight}px`;
-                
+
                 document.body.classList.add('no-scroll'); // Disable background scrolling
 
 
@@ -952,8 +959,8 @@ include $fold . 'includesv2/head.php';
                     this.closeBottomSheet();
                     return;
                 }
-                
-                
+
+
                 this.currentBottomSheetMode = this.currentBottomSheetMode || null;
                 this.currentBottomSheetType = this.currentBottomSheetType || null;
                 this.currentBottomSheetRowId = this.currentBottomSheetRowId || null;
@@ -962,7 +969,7 @@ include $fold . 'includesv2/head.php';
                     this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
                     setTimeout(() => {
                         document.querySelector('.bottomSheet')?.classList.add('popBottomSheet');
-                        
+
                     }, 100);
                     return;
                 } else {
@@ -1011,7 +1018,7 @@ include $fold . 'includesv2/head.php';
                 this.elements.bottomSheetMain.classList.add('bottomSheetMainVisible');
                 setTimeout(() => {
                     document.querySelector('.bottomSheet')?.classList.add('popBottomSheet');
-                    
+
                 }, 100);
 
 
@@ -1020,7 +1027,7 @@ include $fold . 'includesv2/head.php';
                     this.cachedTemplate = await TemplateCache.get(templateName);
                     this.currentTemplate = templateName;
                 }
-                console.log(this.cachedTemplate);
+
                 this.elements.bottomSheet.innerHTML = this.cachedTemplate;
 
                 if (mode === 'editProduct') {
@@ -1204,12 +1211,12 @@ include $fold . 'includesv2/head.php';
                 calculations.processCardData(data)
             },
             updateProceedButtonState() {
-
                 const proceedBtn = this.elements.nextBtn;
                 const backBtn = this.elements.backBtn;
+                const addProductBtn = document.querySelector('#addProductBtn');
+                const editProductBtn = document.querySelector('#editProductBtn');
 
                 const updateButtonState = (button, isDisabled) => {
-
                     if (!button) return;
 
                     if (isDisabled) {
@@ -1221,10 +1228,12 @@ include $fold . 'includesv2/head.php';
                     }
                 };
 
-                // If processing, disable both buttons
+                // If processing, disable all buttons
                 if (AppState.isProcessing()) {
                     updateButtonState(proceedBtn, true);
                     updateButtonState(backBtn, true);
+                    updateButtonState(addProductBtn, true);
+                    updateButtonState(editProductBtn, true);
                     AppState.nextBtnState.active = false;
                     return;
                 }
@@ -1244,8 +1253,10 @@ include $fold . 'includesv2/head.php';
                     AppState.nextBtnState.active = true;
                 }
 
-                // Enable back button when not processing
+                // Enable all other buttons when not processing
                 updateButtonState(backBtn, false);
+                updateButtonState(addProductBtn, false);
+                updateButtonState(editProductBtn, false);
             },
 
             assignNextButton(element) {
@@ -1309,6 +1320,10 @@ include $fold . 'includesv2/head.php';
 
                         const sectionContainer = document.getElementById('sectionContainer');
                         sectionContainer.appendChild(deliverySection);
+
+                        const cartContainer = document.getElementById('cartSection')
+                        cartContainer.style.display = 'none'
+
                         ProgressManager.updateProgress('CHOOSE_PROVIDER');
 
                         // Update app state
@@ -1373,13 +1388,14 @@ include $fold . 'includesv2/head.php';
                             contactSection.innerHTML = template;
 
                             const sectionContainer = document.getElementById('sectionContainer');
-                            const cartContainer = document.getElementById('cartSection')
-                            cartContainer.style.display = 'none'
-                            sectionContainer.classList.remove('md:w-2/3');
+                            
+                            
                             sectionContainer.appendChild(contactSection);
 
                             AppState.nextBtnState.status = CONSTANTS.ORDER_STATES.CONTACT_DETAILS;
+
                             await this.initializeContactDetailsComponents()
+
                             AppState.setProcessingState(CONSTANTS.PROCESSING_STATES.INITIAL_LOAD, false);
                         }
                         return
@@ -1451,6 +1467,9 @@ include $fold . 'includesv2/head.php';
 
             async initializeDeliveryDetailsComponents() {
 
+                let nextBtn = document.querySelector('#deliveryUpdateBtn');
+                this.assignNextButton(nextBtn);
+
                 let data = await APIService.getDeliveryDetails()
 
                 if (data) {
@@ -1458,8 +1477,10 @@ include $fold . 'includesv2/head.php';
 
                     const districtName = document.getElementById('districtName');
                     if (districtName) {
-                        districtName.textContent = data.district || '';
+
+                        districtName.textContent = data.selected_district || '';
                     }
+                    
 
                     const cities = data.areas;
                     const dropdownList = document.querySelector('#cityDropDown').querySelector('.dropdownList');
@@ -1552,6 +1573,7 @@ include $fold . 'includesv2/head.php';
                 let data = await APIService.getContactDetails()
 
                 if (data) {
+                    console.log(data, 'datatvv')
                     AppState.setProcessingState(CONSTANTS.PROCESSING_STATES.INITIAL_LOAD, true);
                     this.nameInput = document.querySelector('#customerName');
                     this.emailInput = document.querySelector('#customerEmail');
@@ -1578,23 +1600,12 @@ include $fold . 'includesv2/head.php';
                         AppState.contactData.email = e.target.value;
                     })
 
-                    const script = document.createElement('script');
-                    script.src = 'orderv3/components/modules/datepicker.js';
-                    script.async = true;
-
-                    await new Promise((resolve, reject) => {
-                        script.onload = resolve;
-                        script.onerror = reject;
-                        document.head.appendChild(script);
-                    });
-
-
-                    // Initialize with callback
                     window.initializeDatePicker({
                         onSelect: (date) => {
                             AppState.contactData.travelDate = window.getFormatedDate(date);
                         }
                     });
+
 
 
 
@@ -1616,6 +1627,7 @@ include $fold . 'includesv2/head.php';
                         console.log(' no previous date available')
                         AppState.contactData.travelDate = window.getFormatedDate(window.getSelectedDate())
                     }
+
                     if (data.travel_purpose != "") {
                         AppState.contactData.travelPurpose = data.travel_purpose;
                         Dropdown.setValue('purposeSelector', data.travel_purpose)
@@ -1720,6 +1732,13 @@ include $fold . 'includesv2/head.php';
                         if (deliveryDetailsSection) {
                             deliveryDetailsSection.remove();
                         }
+
+                        // Show cart section again
+                        const cartSection = document.getElementById('cartSection');
+                        if (cartSection) {
+                            cartSection.style.display = 'block';
+                        }
+                        
                         // Show the rates container again
                         const getRatesContainer = document.querySelector('#getRatesContainer');
                         if (getRatesContainer) {
@@ -1735,16 +1754,8 @@ include $fold . 'includesv2/head.php';
                         if (contactDetailsSection) {
                             contactDetailsSection.remove();
                         }
-                        // Show cart section again
-                        const cartSection = document.getElementById('cartSection');
-                        if (cartSection) {
-                            cartSection.style.display = 'block';
-                        }
-                        // Reset section container width
-                        const sectionContainer = document.getElementById('sectionContainer');
-                        if (sectionContainer) {
-                            sectionContainer.classList.add('md:w-2/3');
-                        }
+                        
+                        
                         // Show delivery details section
                         const deliverySection = document.querySelector('#deliveryDetailsSection');
                         if (deliverySection) {
@@ -1770,7 +1781,7 @@ include $fold . 'includesv2/head.php';
                         break;
 
                     default:
-                        console.log("No back action available for current state:", currentStatus);
+                        window.location = '/'
                 }
 
                 // Re-assign the appropriate next button after state change
@@ -1827,7 +1838,14 @@ include $fold . 'includesv2/head.php';
                         item.allowDelete = data.length > 1;
                     });
                     AppState.cardDataState = data;
+
                     UIManager.renderCards(AppState.cardDataState);
+
+                    if (data.length == 3) {
+                        UIManager.handleProductAddBtnVisibility(false)
+                    } else {
+                        UIManager.handleProductAddBtnVisibility(true)
+                    }
                     let cartTotal = this.calculateTotalAmount(AppState.cardDataState);
                     await UIManager.updateCart(cartTotal)
                 } catch (error) {
@@ -1890,18 +1908,18 @@ include $fold . 'includesv2/head.php';
 
             },
             async openOtpWidget() {
-                
+
                 this.loginWidgetContainer.style.display = 'flex'
                 this.otpWidget.style.display = 'flex'
                 document.querySelector('body').classList.add('snipContainer');
                 this.mobNumberInput.focus()
-                
-                UIManager.elements.templateMainContainer.style.display='none'
+
+                UIManager.elements.templateMainContainer.style.display = 'none'
             },
             async closeOtpWidget() {
 
                 if (this.loginWidgetContainer) {
-                    UIManager.elements.templateMainContainer.style.display='flex'
+                    UIManager.elements.templateMainContainer.style.display = 'flex'
                     // Reset widget state properly
                     this.loginWidgetContainer.style.display = 'none';
                     this.otpWidget.style.display = 'none';
@@ -2332,6 +2350,8 @@ include $fold . 'includesv2/head.php';
         }
     </script>
 
+
 </body>
+
 
 </html>
