@@ -17,40 +17,30 @@ window.userCheckMain = function () {
         const userInfo = JSON.parse(userInfoCheck);
 
         // Select all elements with the class '.loginBtn'
-       
+
 
         // Iterate over each button and update it
         loginBtns.forEach(element => {
             // Create a button element to replace the anchor tag
-            element.style.display='none'
+            element.style.display = 'none'
             // Hide my account buttons
             myAccountBtns.forEach(btn => {
                 btn.style.display = 'block';
             });
 
-            // Add click event for logout
-            button.addEventListener('click', () => {
-                // Clear localStorage
-                localStorage.removeItem('userInfo');
 
-                // Change text to Login
-                button.querySelector('#loginText').textContent = "Login";
-                
-                // Add click event for login redirection
-                button.addEventListener('click', () => {
+            let logoutBtnMain = document.querySelector('#logoutBtnMain')
+
+            if (logoutBtnMain) {
+                // Add click event for logout
+                logoutBtnMain.addEventListener('click', () => {
+                    // Clear localStorage
+                    localStorage.removeItem('userInfo');
                     window.location.href = '/login';
                 });
+            }
 
-                // Hide my account buttons
-                myAccountBtns.forEach(btn => {
-                    btn.style.display = 'none';
-                });
 
-                // Update my account link
-                if (myAccountLink) {
-                    myAccountLink.href = '/login';
-                }
-            });
 
             // Replace anchor with button
             element.parentNode.replaceChild(button, element);
@@ -61,13 +51,13 @@ window.userCheckMain = function () {
 
     } else {
         console.log('No userInfo found in localStorage');
-        
+
         myAccountBtns.forEach(element => {
             element.style.display = 'none';
         });
 
         loginBtns.forEach(element => {
-            element.style.display='block'
+            element.style.display = 'block'
         })
 
         return false;

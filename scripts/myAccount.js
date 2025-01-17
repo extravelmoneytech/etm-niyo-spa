@@ -83,10 +83,10 @@ function createList(item) {
             </div>
         </td>
         <td>
-            <div class="viewBtn h-9 px-2 py-2 bg-[#0e51a0]/5 rounded-lg justify-center items-center gap-1 inline-flex cursor-pointer">
+            <div class="viewBtn h-9 px-4 py-2 bg-primary-10 rounded-lg justify-center items-center gap-1 inline-flex cursor-pointer">
                 <img src='../public/images/logo/eye.svg' alt="Eye Icon">
                 <div class="px-1 justify-center items-center flex">
-                    <div class="text-[#0e51a0] text-sm font-semibold leading-tight">View</div>
+                    <div class="text-primary text-sm font-semibold leading-tight">View</div>
                 </div>
             </div>
         </td>

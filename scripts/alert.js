@@ -1,9 +1,22 @@
+// Function to check if an element is visible in viewport
+function isElementInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
 // Function to create and insert an alert below a target element
 function insertAlertBelowElement(targetElement, alertContent) {
     // Check if an alert already exists below the target element
     const existingAlert = targetElement.nextElementSibling;
     if (existingAlert && existingAlert.classList.contains('custom-alert')) {
-        scrollToElement(existingAlert);
+        if (!isElementInViewport(existingAlert)) {
+            scrollToElement(existingAlert);
+        }
         return;
     }
 
@@ -22,8 +35,10 @@ function insertAlertBelowElement(targetElement, alertContent) {
     // Insert the alert element directly below the target element
     targetElement.insertAdjacentElement('afterend', alertSpan);
 
-    // Scroll to the newly created alert
-    scrollToElement(alertSpan);
+    // Only scroll if the new alert is not visible in the viewport
+    if (!isElementInViewport(alertSpan)) {
+        scrollToElement(alertSpan);
+    }
 }
 
 function scrollToElement(element) {

@@ -646,6 +646,10 @@ border: 1px solid rgba(0, 0, 0, 0.10);
 #mobileContactBtn{
   transition: 0.1s;
   width: 6rem;
+  color: var(--color-primary);
+}
+#mobileContactBtn svg{
+  fill: var(--color-primary);
 }
 .hideContactMob{
   transform: translate(-50%, -5rem);
@@ -653,11 +657,11 @@ border: 1px solid rgba(0, 0, 0, 0.10);
   z-index: -1;
 }
 .activeContactBtn{
-  background-color: #0E51A0;
-  color: white;
+  background-color: var(--color-primary);
+  color: white !important;
 }
-#mobileContactBtn svg{
-  display: none;
+.activeContactBtn svg{
+  fill: white !important;
 }
 .activeContactBtn svg{
   display: block !important;

@@ -108,8 +108,8 @@ include $fold . 'includesv2/head.php';
             include $fold . 'includesv2/header.php';
             ?>
 
-            <div id="backBtn" class="px-5  mt-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <div class="px-5  mt-2">
+                <svg id="backBtn" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
                     <path d="M27.9998 15.9999C27.9998 16.2652 27.8945 16.5195 27.7069 16.7071C27.5194 16.8946 27.265 16.9999 26.9998 16.9999H7.41356L14.7073 24.2924C14.8002 24.3854 14.8739 24.4957 14.9242 24.6171C14.9745 24.7384 15.0004 24.8686 15.0004 24.9999C15.0004 25.1313 14.9745 25.2614 14.9242 25.3828C14.8739 25.5042 14.8002 25.6145 14.7073 25.7074C14.6144 25.8004 14.5041 25.8741 14.3827 25.9243C14.2613 25.9746 14.1312 26.0005 13.9998 26.0005C13.8684 26.0005 13.7383 25.9746 13.6169 25.9243C13.4955 25.8741 13.3852 25.8004 13.2923 25.7074L4.29231 16.7074C4.19933 16.6146 4.12557 16.5043 4.07525 16.3829C4.02493 16.2615 3.99902 16.1314 3.99902 15.9999C3.99902 15.8685 4.02493 15.7384 4.07525 15.617C4.12557 15.4956 4.19933 15.3853 4.29231 15.2924L13.2923 6.29245C13.4799 6.1048 13.7344 5.99939 13.9998 5.99939C14.2652 5.99939 14.5197 6.1048 14.7073 6.29245C14.895 6.48009 15.0004 6.73458 15.0004 6.99995C15.0004 7.26531 14.895 7.5198 14.7073 7.70745L7.41356 14.9999H26.9998C27.265 14.9999 27.5194 15.1053 27.7069 15.2928C27.8945 15.4804 27.9998 15.7347 27.9998 15.9999Z" fill="black" />
                 </svg>
             </div>
@@ -912,7 +912,7 @@ include $fold . 'includesv2/head.php';
             async loadForexData() {
 
                 const rates = await APIService.getRates(AppState.getState('currentCity', 'mainState'));
-
+                await TemplateCache.get('getRatesCard');
                 calculations.processCardData(rates);
                 AppState.nextBtnState.active = true;
             },
@@ -1279,8 +1279,11 @@ include $fold . 'includesv2/head.php';
             },
             async handleNextBtn() {
 
+                console.log('called againnbb')
+
 
                 if (!userCheck()) {
+                    AppState.setProcessingState(CONSTANTS.PROCESSING_STATES.INITIAL_LOAD, true);
                     if (loginManager.loginWidgetContainer) {
                         loginManager.openOtpWidget()
                     } else {
@@ -1290,7 +1293,9 @@ include $fold . 'includesv2/head.php';
                         tempDiv.innerHTML = template;
                         body.appendChild(tempDiv.firstElementChild);
                         await this.initializeLoginWidget();
+
                     }
+                    AppState.setProcessingState(CONSTANTS.PROCESSING_STATES.INITIAL_LOAD, false);
 
                     return
                 }
@@ -1388,8 +1393,8 @@ include $fold . 'includesv2/head.php';
                             contactSection.innerHTML = template;
 
                             const sectionContainer = document.getElementById('sectionContainer');
-                            
-                            
+
+
                             sectionContainer.appendChild(contactSection);
 
                             AppState.nextBtnState.status = CONSTANTS.ORDER_STATES.CONTACT_DETAILS;
@@ -1480,7 +1485,7 @@ include $fold . 'includesv2/head.php';
 
                         districtName.textContent = data.selected_district || '';
                     }
-                    
+
 
                     const cities = data.areas;
                     const dropdownList = document.querySelector('#cityDropDown').querySelector('.dropdownList');
@@ -1738,7 +1743,7 @@ include $fold . 'includesv2/head.php';
                         if (cartSection) {
                             cartSection.style.display = 'block';
                         }
-                        
+
                         // Show the rates container again
                         const getRatesContainer = document.querySelector('#getRatesContainer');
                         if (getRatesContainer) {
@@ -1754,8 +1759,8 @@ include $fold . 'includesv2/head.php';
                         if (contactDetailsSection) {
                             contactDetailsSection.remove();
                         }
-                        
-                        
+
+
                         // Show delivery details section
                         const deliverySection = document.querySelector('#deliveryDetailsSection');
                         if (deliverySection) {
@@ -1901,6 +1906,7 @@ include $fold . 'includesv2/head.php';
                 this.changeNumberBtn = document.querySelector('#changeNumberBtn');
                 this.otpTimer = document.querySelector('.otpTimer');
                 this.resendBtn = document.querySelector('.otpResendBtn');
+                this.backBtnLogin = document.querySelector('#backBtnLogin')
 
                 this.setupOTPInputs();
                 this.setupCountryCodeDropdown();
@@ -1930,6 +1936,10 @@ include $fold . 'includesv2/head.php';
 
 
                 }
+            },
+            handleBackBtnLogin() {
+                loginManager.closeOtpWidget();
+                this.resetLoginWidget()
             },
 
             // OTP Related Functions
@@ -2113,6 +2123,9 @@ include $fold . 'includesv2/head.php';
                         loginManager.closeOtpWidget(); // Only close if the click was outside the otpWidget
                     }
                 });
+                this.backBtnLogin.addEventListener('click', () => {
+                    this.handleBackBtnLogin()
+                })
 
             },
             async handleSendOtp(otpMode) {
@@ -2130,19 +2143,61 @@ include $fold . 'includesv2/head.php';
                 } else {
                     removeAlertBelowElement(this.otpInputContainer);
                 }
-                let response = await APIService.sendOtp(otpMode, countryCode, mobNumber)
 
-                if (response) {
-                    console.log(response);
-                    this.sendOtpContainer.style.display = 'none';
-                    this.verifyOtpContainer.style.display = 'flex';
-                    document.querySelector('#mobNum').textContent = countryCode + " " + mobNumber
-                    this.otpInputs[0].focus();
-                    this.activeResendOtp()
-                } else {
-                    console.log('some error occurred')
+                let btn;
+                if (otpMode === 'wa') {
+                    btn = loginManager.whatsappOtpSendDiv;
+                } else if (otpMode === 'sms') {
+                    btn = loginManager.optSendDiv;
                 }
 
+                try {
+                    this.toggleButtonLoader(btn, true)
+                    let response = await APIService.sendOtp(otpMode, countryCode, mobNumber)
+
+                    if (response) {
+                        console.log(response);
+                        this.sendOtpContainer.style.display = 'none';
+                        this.verifyOtpContainer.style.display = 'flex';
+                        document.querySelector('#mobNum').textContent = countryCode + " " + mobNumber
+                        this.otpInputs[0].focus();
+                        this.activeResendOtp()
+                    } else {
+                        console.log('some error occurred')
+                    }
+                } catch (error) {
+                    console.error('Error sending OTP:', error);
+                } finally {
+                    // Hide loader and restore button
+                    this.toggleButtonLoader(btn, false);
+                }
+
+
+
+            },
+            toggleButtonLoader(button, isLoading) {
+                if (!button) return;
+
+                const contentElement = button.querySelector('.button-content');
+                const loaderElement = button.querySelector('.button-loader');
+
+                if (!contentElement || !loaderElement) return;
+
+                if (isLoading) {
+                    // Show loader, hide content
+                    contentElement.classList.add('hidden');
+                    loaderElement.classList.remove('hidden');
+                    button.disabled = true;
+                    button.style.opacity = '0.7';
+                    button.style.cursor = 'not-allowed';
+                } else {
+                    // Hide loader, show content
+                    contentElement.classList.remove('hidden');
+                    loaderElement.classList.add('hidden');
+                    button.disabled = false;
+                    button.style.opacity = '1';
+                    button.style.cursor = 'pointer';
+                }
             },
             async handleVerifyOtp() {
                 let fetchOtp = this.getOtpValue()
@@ -2158,33 +2213,46 @@ include $fold . 'includesv2/head.php';
                     removeAlertBelowElement(this.otpContainer)
                 }
 
-                let response = await APIService.verifyOtp(fetchOtp, aff_token);
+                let btn=this.otpVerify
 
-                if (response.verified) {
-                    console.log(response)
+                try {
+                    
+                    this.toggleButtonLoader(btn,true)
+                    let response = await APIService.verifyOtp(fetchOtp, aff_token);
 
-
-                    sessionStorage.setItem('userId', response.uid)
-
-
-
-                    // Store the object as a JSON string
-                    const userInfo = {
-                        userId: response.uid,
-                        countryCode: response.customer_country_code,
-                        mobNum: response.customer_mobile
-                    };
-                    localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                    if (response.verified) {
+                        console.log(response)
 
 
-                    loginManager.closeOtpWidget();
-                    this.resetLoginWidget()
-                    window.userCheckMain()
-                    UIManager.handleNextBtn()
-                } else {
-                    insertAlertBelowElement(this.otpContainer, 'Incorrect OTP');
-                    return
+                        sessionStorage.setItem('userId', response.uid)
+
+
+
+                        // Store the object as a JSON string
+                        const userInfo = {
+                            userId: response.uid,
+                            countryCode: response.customer_country_code,
+                            mobNum: response.customer_mobile
+                        };
+                        localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
+
+                        
+                        window.userCheckMain()
+                        UIManager.handleNextBtn()
+                        loginManager.closeOtpWidget();
+                        this.resetLoginWidget()
+                    } else {
+                        insertAlertBelowElement(this.otpContainer, 'Incorrect OTP');
+                        return
+                    }
+                } catch (error) {
+                    console.error(error)
+                } finally {
+                    this.toggleButtonLoader(btn,false)
                 }
+
+
             },
             resetLoginWidget() {
                 // Reset OTP inputs

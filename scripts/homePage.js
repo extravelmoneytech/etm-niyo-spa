@@ -640,7 +640,7 @@ document.querySelector('#getRatesButtonMt').addEventListener('click', () => {
 
 
 document.querySelector('#citySelect').addEventListener('click', () => {
-    document.querySelector('#citySelect').style.opacity=0.5
+    
 
     let selectedCityName = null;
     let resultsContainer = document.querySelector('#results');
@@ -663,6 +663,7 @@ document.querySelector('#citySelect').addEventListener('click', () => {
         console.log('nooo')
         removeAlertBelowElement(citySelectorContainer);
     }
+    document.querySelector('#citySelect').style.opacity=0.5
 
     if (productType === 'fx') {
         handleBuyCityWidgetTransmission()
