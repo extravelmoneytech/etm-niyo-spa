@@ -43,7 +43,7 @@
                                           </svg>
     
                                           <p class="text-xl w-full font-bold" style="word-wrap: break-word;background: linear-gradient(329deg, #0E51A0 -43.1%, #E31D1C 144.49%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;">Fast Credit</p>
-                                          <span class="text-black/60 text-sm font-normal  leading-normal">Credit/Delivery in <br/>48 working hours.</span>
+                                          <span class="text-black/60 text-sm font-normal  leading-normal">Delivery in <br/>48 working hours.</span>
     
     
     

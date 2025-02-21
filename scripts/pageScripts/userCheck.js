@@ -30,9 +30,7 @@ window.userCheckMain = function () {
 
 
             let logoutBtnMain = document.querySelector('#logoutBtnMain')
-
-            if (logoutBtnMain) {
-                // Add click event for logout
+            if(logoutBtnMain){
                 logoutBtnMain.addEventListener('click', () => {
                     // Clear localStorage
                     localStorage.removeItem('userInfo');
@@ -40,10 +38,10 @@ window.userCheckMain = function () {
                 });
             }
 
+            
+            
 
 
-            // Replace anchor with button
-            element.parentNode.replaceChild(button, element);
         });
 
         console.log(userInfo, 'userInfo');

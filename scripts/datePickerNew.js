@@ -1,7 +1,16 @@
 window.initializeDatePicker = function (config = {}) {
+    const datePicker = document.getElementById('datePicker');
+
+    // Check if the date picker is already initialized
+    if (datePicker.dataset.initialized) {
+        return;
+    }
+
+    // Mark the date picker as initialized
+    datePicker.dataset.initialized = true;
+
     const onSelect = config.onSelect || function () { };
 
-    const datePicker = document.getElementById('datePicker');
     const selector = document.querySelector('#datePickerSelector');
     const calendar = document.getElementById('calendar');
     const calendarDays = document.getElementById('calendarDays');
@@ -9,33 +18,19 @@ window.initializeDatePicker = function (config = {}) {
     const prevMonth = document.getElementById('prevMonth');
     const nextMonth = document.getElementById('nextMonth');
 
-    let selectedDate = new Date();
-    let currentMonth = selectedDate.getMonth();
-    let currentYear = selectedDate.getFullYear();
+    let selectedDate = null; // Changed to null initially
+    let currentMonth = new Date().getMonth();
+    let currentYear = new Date().getFullYear();
 
     const months = [
         'January', 'February', 'March', 'April', 'May', 'June',
         'July', 'August', 'September', 'October', 'November', 'December'
     ];
 
-    updateDatePicker(selectedDate);
-
-    window.getSelectedDate = function () {
-        return selectedDate;
-    };
-
-    window.setPickerDate = function (date) {
-        if (date instanceof Date && !isNaN(date)) {
-            selectedDate = date;
-            currentMonth = selectedDate.getMonth();
-            currentYear = selectedDate.getFullYear();
-            updateDatePicker(selectedDate);
-            renderCalendar();
-            onSelect(selectedDate);
-        } else {
-            console.warn("Invalid date provided to setPickerDate");
-        }
-    };
+    // Set initial states
+    document.querySelector('#selectedDate').textContent = 'Select a date';
+    document.querySelector('#selectedDate').style.opacity = '0.5'; // Add initial opacity
+    
 
     function updateDatePicker(d) {
         const date = new Date(d);
@@ -44,7 +39,10 @@ window.initializeDatePicker = function (config = {}) {
         const year = date.getFullYear();
         const formattedDate = `${day}/${month}/${year}`;
         document.querySelector('#selectedDate').textContent = formattedDate;
-        datePicker.value = formattedDate;
+        datePicker.setAttribute('value', `${day}-${month}-${year}`);
+        
+        // Update opacity when date is selected
+        document.querySelector('#selectedDate').style.opacity = '1';
     }
 
     function renderCalendar() {
@@ -72,7 +70,20 @@ window.initializeDatePicker = function (config = {}) {
 
                     const cellDate = `${String(day).padStart(2, '0')}/${String(currentMonth + 1).padStart(2, '0')}/${currentYear}`;
                     cell.setAttribute('data-value', cellDate);
+                    
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);
+                    const cellDateObj = new Date(currentYear, currentMonth, day);
+                    
+                    const maxDate = new Date(today);
+                    maxDate.setDate(today.getDate() + 60);
+                    
+                    if (cellDateObj < today || cellDateObj > maxDate) {
+                        cell.setAttribute('disabled', '');
+                        cell.classList.add('disabled-date');
+                    }
 
+                    // Update selected date styling
                     if (
                         selectedDate &&
                         day === selectedDate.getDate() &&
@@ -85,6 +96,9 @@ window.initializeDatePicker = function (config = {}) {
                     const currentDay = day;
 
                     cell.addEventListener('click', () => {
+                        if (cell.hasAttribute('disabled')) {
+                            return;
+                        }
                         document.querySelectorAll('.selected').forEach(el => el.classList.remove('selected'));
                         selectedDate = new Date(currentYear, currentMonth, currentDay);
                         updateDatePicker(selectedDate);
@@ -117,7 +131,7 @@ window.initializeDatePicker = function (config = {}) {
             const month = String(dateObj.getMonth() + 1).padStart(2, '0');
             const year = dateObj.getFullYear();
 
-            return `${day}/${month}/${year}`;
+            return `${day}-${month}-${year}`;
         } catch (error) {
             console.warn('Error formatting date:', error);
             return null;
@@ -126,6 +140,7 @@ window.initializeDatePicker = function (config = {}) {
 
 
     selector.addEventListener('click', () => {
+        console.log(calendar.classList,'calendar.classList')
         calendar.classList.toggle('calendar-visible');
         calendar.classList.toggle('calendar-hidden');
     });

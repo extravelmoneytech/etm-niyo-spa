@@ -18,6 +18,7 @@ let copyBtn = document.querySelector('#copyBtn')
 console.log(userInfoCheck,'userInfoCheck');
 
 let orderId = sessionStorage.getItem('orderId');
+userInfoCheck=JSON.parse(userInfoCheck)
 let uid = userInfoCheck.userId
 
 console.log(uid,'uidTesting')
@@ -182,6 +183,7 @@ function createKycUploaders(documentObject) {
                 };
                 deleteFileFromApi(data)
                     .then((response) => {
+                        console.log(response)
                        
                         if (response.result) {
                             // Clear the uploader state (resetting to initial empty state)
@@ -222,6 +224,7 @@ function createKycUploaders(documentObject) {
 
 
 async function deleteFileFromApi(data) {
+    console.log(data)
     // Construct the parameters for the API call
     const params = new URLSearchParams({
         action: 'kyc_delete',
@@ -288,6 +291,7 @@ function initFileUploadListeners() {
                 if (uploader.classList.contains('kycUploaderActive')) {
                     // If there's an active file, delete it
                     await deleteFileFromApi(existingTag).then((response) => {
+                        console.log(response)
                         if (!response.success) {
                             alert('Error deleting the previous file. Please try again.');
                             return; // Prevent the new upload if the delete fails

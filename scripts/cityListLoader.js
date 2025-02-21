@@ -57,7 +57,11 @@ const popularMoneyTransferCities = [
 
       const cityText = document.createElement('p');
       cityText.className = 'text-xs font-medium leading-3';
-      cityText.textContent = city;
+      if(city==="Ernakulam"){
+        cityText.textContent = "Kochi";
+      }else{
+        cityText.textContent = city;
+      }
 
       cityElement.appendChild(cityText); // Append the text to the city element
 
@@ -160,11 +164,6 @@ const popularMoneyTransferCities = [
   document.getElementById('getRatesButton').addEventListener('click', function () {
       currentCityType = 'forex';
       displayPopularCities(forexCityData.cityData, popularForexCities); // Show forex city list
-  });
-
-  document.getElementById('getRatesButtonMt').addEventListener('click', function () {
-      currentCityType = 'moneyTransfer';
-      displayPopularCities(moneyTransferCityData.cityData, popularMoneyTransferCities); // Show money transfer city list
   });
 
   // Event listener for input field focus event to show popular cities when input is cleared

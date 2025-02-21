@@ -5,13 +5,14 @@
 
 $fold = "../../";
 $kycCompletePage = true;
+$newHeader = true;
 $title = "Complete KYC";
 include $fold . 'includesv2/head.php';
 
 ?>
 
 <body class="w-full flex flex-col  items-center justify-center">
-    <div class="flex flex-col items-center justify-center w-full max-w-[800px]">
+    <div class="flex flex-col items-center justify-center w-full ">
         <div class="w-full chooseCityOverlayMain  relative">
 
             <?php
@@ -23,13 +24,57 @@ include $fold . 'includesv2/head.php';
 
 
             <!-- rest here -->
+            <div class="progressBar mb-0 md:mb-8 hidden md:block">
+                            <div class="w-full justify-start items-center progressBar hidden md:inline-flex mt-8">
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                                <div class="flex flex-col relative">
+                                    <div class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] step-circle flex-col justify-center items-center gap-2.5 inline-flex">
+                                        <span class="text-black text-xl font-bold">1</span>
+                                    </div>
+                                    <span class="step-label text-black text-lg font-bold absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Get Rates</span>
+                                </div>
 
-            <div>
-                <section class="px-5 flex flex-col rounded-xl p-10 gap-8">
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                                <div class="flex flex-col relative">
+                                    <div class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] step-circle flex-col justify-center items-center gap-2.5 inline-flex">
+                                        <span class="text-black text-xl font-bold">2</span>
+                                    </div>
+                                    <span class="step-label text-black text-lg font-bold absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Delivery Details</span>
+                                </div>
+
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                                <div class="flex flex-col relative">
+                                    <div class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] step-circle flex-col justify-center items-center gap-2.5 inline-flex">
+                                        <span class="text-black text-xl font-bold">3</span>
+                                    </div>
+                                    <span class="step-label text-black text-lg font-bold absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Contact Details</span>
+                                </div>
+
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                                <div class="flex flex-col relative">
+                                    <div class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] step-circle flex-col justify-center items-center gap-2.5 inline-flex">
+                                        <span class="text-black text-xl font-bold">4</span>
+                                    </div>
+                                    <span class="step-label text-black text-lg font-bold absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Review & Payment</span>
+                                </div>
+
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                                <div class="flex flex-col relative">
+                                    <div class="w-12 h-12 p-2.5 bg-white rounded-[30px] border-2 border-[#20bc73] step-circle flex-col justify-center items-center gap-2.5 inline-flex">
+                                        <span class="text-black text-xl font-bold">5</span>
+                                    </div>
+                                    <span class="step-label text-black text-lg font-bold absolute -bottom-12 min-w-48 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">Complete KYC</span>
+                                </div>
+                                <div class="grow shrink basis-0 h-0.5 progress-line bg-[#20bc73]"></div>
+                            </div>
+                        </div>
+
+            <div class=" flex flex-col justify-center items-center">
+                <section class="px-5 flex flex-col rounded-xl p-10 gap-8 w-full max-w-[900px]">
 
 
                     <div id="finalKycSection">
-                        <div class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6">
+                        <div class="w-full progressBar justify-start items-center gap-2 inline-flex mt-6 md:hidden">
                             <div
                                 class=" w-10 aspect-square bg-white rounded-3xl border-2 border-primary flex-col justify-center items-center gap-2.5 inline-flex">
                                 <div><span class="text-primary text-lg font-bold ">5</span><span
@@ -43,9 +88,12 @@ include $fold . 'includesv2/head.php';
                         </div>
 
 
+                        
+
+
                         <div class="w-full border-2 border-primary rounded-3xl mt-6 px-3 py-8">
-                            <p class="text-black text-lg font-bold leading-[27px] block">No Need to Remember Documents; Go Paperless.</p>
-                            <p class="text-[#677489] mt-4 text-sm font-medium leading-[21px] tracking-tight">Please Upload the following documents listed below</p>
+                            <p class="text-black text-lg font-bold leading-[27px] block">Upload traveler's documents for verification.</p>
+                            <p class="text-[#677489] mt-4 text-sm font-medium leading-[21px] tracking-tight">These documents are shared with the processing money changer to verify eligibility.</p>
 
 
 
@@ -79,9 +127,7 @@ include $fold . 'includesv2/head.php';
                                     <div class="flex gap-4 items-center px-2 mt-1 kycExtender">
                                         <span class="text-[#606060] text-xs font-normal leading-[21px]">Sample_Document.PDF</span>
                                         <a href="" target="_blank" class="preview_link rounded-lg  px-[3px] gap-1 flex items-center justify-center ml-auto">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 16" fill="none">
-                                                <path d="M23.0136 7.77219C22.9817 7.69906 22.2017 5.96938 20.4599 4.2275C18.8436 2.61313 16.0667 0.6875 11.9999 0.6875C7.93299 0.6875 5.15611 2.61313 3.53986 4.2275C1.79799 5.96938 1.01799 7.69625 0.986113 7.77219C0.954062 7.84419 0.9375 7.92212 0.9375 8.00094C0.9375 8.07975 0.954062 8.15768 0.986113 8.22969C1.01799 8.30187 1.79799 10.0316 3.53986 11.7734C5.15611 13.3878 7.93299 15.3125 11.9999 15.3125C16.0667 15.3125 18.8436 13.3878 20.4599 11.7734C22.2017 10.0316 22.9817 8.30469 23.0136 8.22969C23.0457 8.15768 23.0622 8.07975 23.0622 8.00094C23.0622 7.92212 23.0457 7.84419 23.0136 7.77219ZM11.9999 14.1875C9.05799 14.1875 6.48924 13.1169 4.36393 11.0066C3.473 10.1211 2.71908 9.10781 2.12705 8C2.71891 6.89237 3.47285 5.87932 4.36393 4.99438C6.48924 2.88313 9.05799 1.8125 11.9999 1.8125C14.9417 1.8125 17.5105 2.88313 19.6358 4.99438C20.5269 5.87932 21.2808 6.89237 21.8727 8C21.2755 9.14469 18.2811 14.1875 11.9999 14.1875ZM11.9999 3.6875C11.1469 3.6875 10.3132 3.94042 9.60397 4.41429C8.89478 4.88815 8.34204 5.56167 8.01563 6.34968C7.68923 7.13768 7.60383 8.00478 7.77023 8.84133C7.93663 9.67787 8.34735 10.4463 8.95047 11.0494C9.55358 11.6525 10.322 12.0632 11.1585 12.2296C11.9951 12.396 12.8622 12.3106 13.6502 11.9842C14.4382 11.6578 15.1117 11.1051 15.5856 10.3959C16.0594 9.68671 16.3124 8.85293 16.3124 8C16.3109 6.85671 15.856 5.76067 15.0476 4.95225C14.2392 4.14382 13.1432 3.68899 11.9999 3.6875ZM11.9999 11.1875C11.3694 11.1875 10.7532 11.0006 10.229 10.6503C9.7048 10.3001 9.29625 9.80224 9.055 9.2198C8.81374 8.63736 8.75062 7.99646 8.87361 7.37815C8.9966 6.75984 9.30018 6.19188 9.74596 5.7461C10.1917 5.30032 10.7597 4.99674 11.378 4.87375C11.9963 4.75076 12.6372 4.81388 13.2197 5.05513C13.8021 5.29639 14.2999 5.70494 14.6502 6.22912C15.0004 6.7533 15.1874 7.36957 15.1874 8C15.1874 8.84538 14.8515 9.65613 14.2538 10.2539C13.656 10.8517 12.8452 11.1875 11.9999 11.1875Z" fill="black" />
-                                            </svg>
+                                            
                                             <span class="text-[12px] text-primary">View</span>
                                         </a>
                                         <svg class="deleteIcon cursor-pointer ml-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -235,9 +281,9 @@ include $fold . 'includesv2/head.php';
                                 <p class="text-black/40 text-[13px] font-medium leading-tight tracking-tight forexContainer">Currencies are subject to their availability. In the rare case that your chosen currency is currently unavailable, We shall intimate you in advance and propose the best possible solution for your consideration. In such cases, the final exchange rate would be subject to fluctuations in the market. If you are unhappy with the rate provided, the Rate Lock Deposit(if any) will be fully refunded to you.</p>
                                 <div class="mt-4">
                                     <p class="text-black text-sm font-normal leading-[21px] tracking-tight">If you have any doubts</p>
-                                    <div class="flex flex-col">
+                                    <div class="flex flex-col md:flex-row md:gap-8">
 
-                                        <a class="w-full h-20 pl-5 py-[19px] bg-[#20bc73]/5 rounded-2xl justify-start items-center inline-flex mt-4" href="https://api.whatsapp.com/send?phone=914842886900" target="_blank">
+                                        <a class="w-full h-20 pl-5 py-[19px] bg-[#20bc73]/5 rounded-2xl justify-start items-center inline-flex mt-4" href="https://api.whatsapp.com/send?phone=919995023600" target="_blank">
                                             <div>
                                                 <div class="self-stretch justify-start items-center gap-2 inline-flex">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
@@ -248,7 +294,7 @@ include $fold . 'includesv2/head.php';
 
                                                     <div class="flex-col justify-start items-start inline-flex">
                                                         <p class="text-black text-sm font-semibold font-['Plus Jakarta Sans'] leading-[21px]">WhatsApp Now</p>
-                                                        <p class="text-black text-sm font-normal font-['Plus Jakarta Sans'] leading-[21px]">+91 4842886900</p>
+                                                        <p class="text-black text-sm font-normal font-['Plus Jakarta Sans'] leading-[21px]">+91 9995023600</p>
                                                     </div>
 
 
@@ -282,21 +328,21 @@ include $fold . 'includesv2/head.php';
                                     </div>
 
 
-                                    <p class="text-black/40 text-xs font-light  leading-[18px] mt-4">Please Note : The forex store may sometimes request for original KYC documents for verification. Kindly keep the originals handy in such a case. If you are not able to upload the KYC, simply e-mail the documents to kyc@extravelmoney.com or send via Whatsapp to 04842886900</p>
+                                    <p class="text-black/40 text-xs font-light  leading-[18px] mt-4">Please Note : The forex store may sometimes request for original KYC documents for verification. Kindly keep the originals handy in such a case. If you are not able to upload the KYC, simply e-mail the documents to kyc@extravelmoney.com or send via Whatsapp to +91 9995023600</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="flex flex-col  mt-6 w-full">
-                            <a href="/myaccount">
+                        <div class="flex flex-col  mt-6 w-full md:flex-row-reverse justify-center items-center gap-4">
+                            <a href="/myaccount" class="w-full">
                                 <div class="h-14  bg-primary rounded-md justify-center items-center inline-flex w-full">
                                     <div class="text-white text-[13px] font-bold ">My Account</div>
                                 </div>
                             </a>
 
 
-                            <a href="/">
-                                <div class="h-14  bg-[#0e1226]/5 rounded-md justify-center items-center inline-flex mt-4 w-full">
+                            <a href="/" class="w-full">
+                                <div class="h-14  bg-[#0e1226]/5 rounded-md justify-center items-center inline-flex w-full">
                                     <div class="text-[#0e1226] text-[13px] font-bold ">Go back to Home</div>
                                 </div>
                             </a>

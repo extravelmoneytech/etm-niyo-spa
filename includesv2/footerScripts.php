@@ -6,7 +6,7 @@ $SCRIPTS = [
     // Common scripts
     'header' => "<script src=\"{$fold}scripts/header.js\"></script>",
     'loadingAnimation' => "<script src=\"{$fold}scripts/loadingAnimation.js\"></script>",
-    'userCheck' => "<script src=\"{$fold}scripts/pageScripts/userCheck.js?ver=1.8\"></script>",
+    'userCheck' => "<script src=\"{$fold}scripts/pageScripts/userCheck.js?ver=2.3\"></script>",
     'api' => "<script src=\"{$fold}scripts/api.js\"></script>",
     // All other scripts
     'cart' => "<script src=\"{$fold}scripts/cart.js?ver=1.3\"></script>",
@@ -17,8 +17,8 @@ $SCRIPTS = [
     'countryData' => "<script src=\"{$fold}scripts/countryData.js\"></script>",
     'forexSuggestion' => "<script src=\"{$fold}scripts/forexSuggestion.js?ver=1.3\" defer></script>",
     'countryDropDown' => "<script src=\"{$fold}scripts/countryDropDown.js\"></script>",
-    'homePage' => "<script src=\"{$fold}scripts/homePage.js?ver=10.9\"></script>",
-    'cityListLoader' => "<script src=\"{$fold}scripts/cityListLoader.js?ver=5.8\"></script>",
+    'homePage' => "<script src=\"{$fold}scripts/homePage.js?ver=11.1\"></script>",
+    'cityListLoader' => "<script src=\"{$fold}scripts/cityListLoader.js?ver=5.9\"></script>",
     'getRates' => "<script src=\"{$fold}scripts/pageScripts/getRates.js?ver=1.80\"></script>",
     'multipleCurrency' => "<script src=\"{$fold}scripts/multipleCurrency.js\"></script>",
     'telInput' => "<script src=\"https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.12/js/intlTelInput.min.js\"></script>",
@@ -29,10 +29,10 @@ $SCRIPTS = [
     'contactDetails' => "<script src=\"{$fold}scripts/pageScripts/contactDetails.js?ver=3.1\"></script>",
     'reviewAndPayment' => "<script src=\"{$fold}scripts/pageScripts/reviewAndPayment.js?ver=3.0\"></script>",
     'completeKyc' => "<script src=\"{$fold}scripts/pageScripts/completeKyc.js?ver=2.7\"></script>",
-    'myAccount' => "<script src=\"{$fold}scripts/myAccount.js?ver=34\"></script>",
+    'myAccount' => "<script src=\"{$fold}scripts/myAccount.js?ver=35\"></script>",
     'myAccountSingle' => "<script src=\"{$fold}scripts/myAccountSingle.js?ver=3.7\"></script>",
     'myAccountProfile' => "<script src=\"{$fold}scripts/myAccountProfile.js?ver=5.7\"></script>",
-    'datePickerNew' => "<script src=\"{$fold}scripts/datePickerNew.js\" defer></script>",
+    'datePickerNew' => "<script src=\"{$fold}scripts/datePickerNew.js?ver=1.2\" defer></script>",
     
 ];
 

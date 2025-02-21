@@ -17,7 +17,8 @@ module.exports = {
           20: 'var(--color-primary-20)',
           10: 'var(--color-primary-10)',
           5: 'var(--color-primary-5)',
-        }
+        },
+        'button-gradient': 'var(--button-gradient)',
       },
       fontSize: {
         'headingCustom': ['2.4rem', '3rem'],
@@ -34,8 +35,8 @@ module.exports = {
         'customMax': '103rem'
       },
       backgroundImage: {
-        'button-gradient': 'var(--button-gradient)',
         'text-gradient': 'var(--text-gradient)',
+        'custom-gradient':'var(--custom-gradient)'
       },
     }
   },

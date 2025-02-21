@@ -3,7 +3,7 @@
 // Global function to handle setting innerHTML of selectedItem and li elements
 function setSelectedItemInnerHTML(dropdownId, item, selectedItem) {
     const dropdownMain = document.getElementById(dropdownId);
-    console.log(item,'setSelectedItemInnerHTML');
+
     // Check if the dropdown has a 'custom-content' attribute
     if (dropdownMain && dropdownMain.hasAttribute('custom-content')) {
         if(dropdownId==='contryCodeMain'){
@@ -15,7 +15,7 @@ function setSelectedItemInnerHTML(dropdownId, item, selectedItem) {
         }
         
     } else {
-        console.log(item,'jjnn')
+        
         // Default behavior: directly set the itemInnerHTML passed as the parameter
         selectedItem.innerHTML = item.innerHTML;
     }
@@ -54,7 +54,7 @@ function selectFirstDropdownItem(dropdownMain) {
 }
 
 function updateFromSession(dropdownMain) {
-    console.log('check...');
+
     const dropdownList = dropdownMain.querySelector('.dropdownList');
     const selectedItem = dropdownMain.querySelector('.selectedItem');
     const storedValue = sessionStorage.getItem(`dropdown_${dropdownMain.id}_selected`);
@@ -201,9 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-document.addEventListener('dropdownChange', (event) => {
-    console.log('Dropdown changed:', event.detail);
-});
+
 
 function getSelectedDropdownItemElement(dropdownId) {
     const dropdownMain = document.getElementById(dropdownId);
@@ -233,15 +231,11 @@ function getSelectedDropdownItemElement(dropdownId) {
 function forceSelectDropdownItem(dropdownId, valueToSelect) {
 
 
-    console.log()
-
-
 
     const dropdownMain = document.getElementById(dropdownId);
 
 
     if (!dropdownMain) {
-        console.error(`Dropdown with ID ${dropdownId} not found.`);
         return;
     }
 

@@ -6,8 +6,6 @@ window.addEventListener('pageshow', function(event) {
         window.location.reload();
     }
 });
-console.log(apiUrl,'apiUrl')
-
 
 
 
@@ -52,47 +50,6 @@ chooseCityOverlay.addEventListener('click', (event) => {
 })
 
 
-// money transfer dropdown updation
-
-const countryListContainer = document.getElementById('mtCountryList');
-const defaultCountry= countryListContainer.getAttribute('defaultCountry')
-// Clear any existing list items in the container
-countryListContainer.innerHTML = '';
-
-// Function to create a country list item
-function createCountryListItem(country) {
-    const listItem = document.createElement('li');
-    listItem.setAttribute('value', country.country.toLowerCase()); // Assuming 'currency' or 'country' can be used for the value attribute
-
-    listItem.setAttribute('currency', country.currency.toLowerCase())
-    // If the country has an alternative name, store it in an attribute for search purposes
-    if (country.alternativeName) {
-        listItem.setAttribute('alternativeName', country.alternativeName);
-    }
-
-    // Create a span element for the flag icon using the flagCode
-    const flagIcon = document.createElement('span');
-    flagIcon.className = `flag-icon icon-dropdown-flag flag-icon-${country.flagCode}`; // Use flagCode for dynamic flag class
-
-    const countryName = document.createElement('span');
-    countryName.textContent = country.country;
-
-    listItem.appendChild(flagIcon); // Append the flag icon
-    listItem.appendChild(countryName); // Append the country name
-
-    return listItem;
-}
-
-// Loop through the country data and create list items
-countryData.forEach(country => {
-    const countryListItem = createCountryListItem(country);
-    countryListContainer.appendChild(countryListItem);
-    if(country.flagCode===defaultCountry){
-        console.log('countryFound',country)
-        forceSelectDropdownItem('mtCountryDropDown',country.country.toLowerCase())
-    }
-    
-});
 
 
 
@@ -119,8 +76,6 @@ if (userInfo) {
  // Parse the JSON string into an object
  userInfo = JSON.parse(userInfo);
 
-// Now it's an object, and you can use it properly
-    console.log(userInfo, 'ytfygug');
 } else {
      console.log('No userInfo found in localStorage');
  }
@@ -147,7 +102,6 @@ async function fetchAndStoreWidgetData() {
 
         widgetData = await response.json();
         // Store data in sessionStorage
-        console.log(JSON.stringify(widgetData.ibr),'widgetData.ibr')
         sessionStorage.setItem('ibrData', JSON.stringify(widgetData.ibr));
 
 
@@ -162,8 +116,8 @@ async function fetchAndStoreWidgetData() {
         
 
         updateApproxValue(widgetData.ibr); // Update the UI with the fetched data
-        updateApproxValueMt(widgetData.ibr)
-        updateCurrencySymbol('mtCountryDropDown', 'mt')
+        // updateApproxValueMt(widgetData.ibr)
+        // updateCurrencySymbol('mtCountryDropDown', 'mt')
         updateCurrencySymbol('widgetCurrency', 'fx')
 
 
@@ -250,7 +204,6 @@ function updateApproxValue(data) {
     // Check if the product type is 'Currency' and the value exceeds the maximum currency note limit
     console.log(Number(maximumCurrencyValue),Number(approxValueFx),'maximumCurrencyValue','approxValueFx')
     if (productType === 'Currency' && Number(approxValueFx) > Number(maximumCurrencyValue)) {
-        console.log(approxValueFx, maximumCurrencyValue,'bcbcbc');
         removeAlertBelowElement(container);
         insertAlertBelowElement(container, 'A Resident Indian can carry up to USD 3000 (or equivalent) in currency notes per trip. For more, consider using a Forex Card or ensure another traveler accompanies you.');
     } else {
@@ -266,7 +219,6 @@ function updateApproxValue(data) {
     } else {
         activeGetRatesBtn(true,'fx'); // Enable the button if within the Forex limit
     }
-    console.log(minimumCurrencyValue,'bbvvccx')
     
 
 
@@ -313,7 +265,6 @@ setInterval(fetchAndStoreWidgetData, 10 * 60 * 1000);
 
 // Listen for a change on any dropdown and update the value
 document.querySelector('#WidgetProduct').addEventListener('dropdownChange', () => {
-    console.log('nnbbvv')
     updateCurrencyList()
     updateApproxValue(widgetData.ibr);
 });
@@ -333,7 +284,6 @@ function updateCurrencyList() {
             const currencyName = li.getAttribute('value');
             
             if (noForexCardCurrencies.includes(currencyName)) {
-                console.log(li);
                 li.style.display = 'none';
             }
         });
@@ -430,7 +380,7 @@ async function getToken(paramsData) {
         const data = await response.json();
         
         sessionStorage.setItem('userValid', data.user_valid);
-        console.log('Success:', data);
+
         sessionStorage.setItem('token', data.token);
         document.querySelector('#citySelect').style.opacity = '1';
         document.querySelector('#citySelect').removeAttribute('disabled');
@@ -504,7 +454,8 @@ document.querySelector('#getRatesButton').addEventListener('click', async (e) =>
         device: '',
         country: '',
         purpose: '',
-        uid:userInfo.userId
+        uid:userInfo.userId,
+        ref_url:'easemytrip'
     };
     }
     else{
@@ -520,7 +471,8 @@ document.querySelector('#getRatesButton').addEventListener('click', async (e) =>
         userip: '',
         device: '',
         country: '',
-        purpose: ''
+        purpose: '',
+        ref_url:'easemytrip'
     };
     }
 console.log(paramsData)
@@ -528,7 +480,6 @@ console.log(paramsData)
 
     // Call common function to get token
     const tokenVal=await getToken(paramsData);
-    console.log(tokenVal,'hungry') 
     if(tokenVal){
          
         let cityName=e.target.getAttribute('city');
@@ -559,85 +510,6 @@ if (widgetAmount && getRatesButton) {
 
 
 
-// Event listener for MT product
-document.querySelector('#getRatesButtonMt').addEventListener('click', () => {
-    productType = 'mt';
-    sessionStorage.setItem('productPage', 'mt');
-    let purpose = document.querySelector('#purposeList').getAttribute('dataval')
-
-    let country = document.querySelector('#mtCountryDropDown').getAttribute('dataval')
-
-
-    let amountField = document.querySelector('#widgetAmountMt');
-
-    let amountText = amountField.value.trim();
-
-
-    // Find the index of the first space
-    const spaceIndex = amountText.indexOf(' ');
-    let amount = spaceIndex !== -1 ? amountText.substring(spaceIndex + 1).trim() : amountText;
-
-    let container = document.querySelector('#widgetMtInputContainer')
-    if (!/\d/.test(amount) || amount == 0) {
-
-        insertAlertBelowElement(container, 'Enter a valid amount')
-        return
-    } else {
-        removeAlertBelowElement(container)
-    }
-    
-    
-
-
-    
-
-// Data for MT product
-
-    let paramsData;
-    if(userInfo){
-        paramsData = {
-            action: 'initial_data',
-            transaction: 'mt',
-            product: 'Telegraphic Transfer(TT)',
-            mobile: userInfo.mobNum,
-            country_code: userInfo.countryCode,
-            userip: '',
-            device: '',
-            country: country,
-            purpose: purpose,
-            amount: amount,
-            currency: mtCurrency
-        };
-    }
-    else{
-       paramsData = {
-            action: 'initial_data',
-            transaction: 'mt',
-            product: 'Telegraphic Transfer(TT)',
-            mobile: '0',
-            country_code: '0',
-            userip: '',
-            device: '',
-            country: country,
-            purpose: purpose,
-            amount: amount,
-            currency: mtCurrency
-        };
-    }
-    
-    
-
-    console.log(paramsData);
-
-    // Call common function to get token
-    getToken(paramsData);
-
-
-    // Open the widget
-    openChooseCityWidget();
-});
-
-
 
 document.querySelector('#citySelect').addEventListener('click', () => {
     
@@ -660,21 +532,14 @@ document.querySelector('#citySelect').addEventListener('click', () => {
         insertAlertBelowElement(citySelectorContainer, 'Please select a city')
         return;
     } else {
-        console.log('nooo')
         removeAlertBelowElement(citySelectorContainer);
     }
     document.querySelector('#citySelect').style.opacity=0.5
 
     if (productType === 'fx') {
         handleBuyCityWidgetTransmission()
-    } else if (productType === 'mt') {
+    } 
 
-        // Store the object in sessionStorage as a JSON string
-        sessionStorage.setItem('mtCity', cityInput.value);
-
-        window.location.href = nextPageUrl;
-
-    }
     document.querySelector('#citySelect').opacity='1'
 
 
@@ -705,7 +570,6 @@ async function handleBuyCityWidgetTransmission(){
             recommendationText: finalText
         }];
 
-        console.log(dataObject)
 
         // Store the object in sessionStorage as a JSON string
         sessionStorage.setItem('storedData', JSON.stringify(dataObject));
@@ -714,37 +578,12 @@ async function handleBuyCityWidgetTransmission(){
 
     
 }
-function toggleWidget(val) {
-    const spaces = ['mt', 'forex'];
-    spaces.forEach(space => {
-        const spaceElement = document.querySelector(`.${space}Space`);
-        const toggleElement = document.querySelector(`#${space}Toggle`);
 
-        const sellCurrencyContainer = document.querySelector('#sellCurrencyContainer')
-        if (space === val) {
-            spaceElement.classList.add('activeSpace');
-            spaceElement.classList.remove('hiddenSpace');
-            toggleElement.classList.add('activeToggle');
-            sellCurrencyContainer.style.display = 'flex'
-        } else {
-            spaceElement.classList.remove('activeSpace');
-            spaceElement.classList.add('hiddenSpace');
-            toggleElement.classList.remove('activeToggle');
 
-            sellCurrencyContainer.style.display = 'none'
-        }
-    });
-}
 
 
 
-document.querySelector('#mtToggle').addEventListener('click', () => {
-    toggleWidget('mt')
-})
 
-document.querySelector('#forexToggle').addEventListener('click', () => {
-    toggleWidget('forex')
-})
 
 
 
@@ -762,266 +601,6 @@ document.querySelector('#forexToggle').addEventListener('click', () => {
 
 
 
-
-
-
-//   testimonial functionality
-
-document.addEventListener('DOMContentLoaded', () => {
-    const testimonialContainer = document.querySelector('.testimonialContainer');
-    const prevBtn = document.getElementById('testiPrevBtn');
-    const nextBtn = document.getElementById('testiNextBtn');
-
-    // Initialize current position index
-    let currentPosition = 0;
-
-    // Get all testimonial cards
-    const testimonialCards = document.querySelectorAll('.testimonialCard');
-    const testimonialCardGaps = document.querySelectorAll('.testiGap');
-    const cardCount = testimonialCards.length;
-
-    // Number of visible cards at a time
-    const visibleCards = 3;
-
-    let cardWidth;
-    let maxScrollPosition;
-
-    // Function to update the card width and max scroll position
-    const updateDimensions = () => {
-        if (testimonialCards.length > 0 && testimonialCardGaps.length > 0) {
-            cardWidth = testimonialCards[0].offsetWidth + testimonialCardGaps[0].offsetWidth; // Adjust for margin/gap
-            maxScrollPosition = cardCount - visibleCards;
-        }
-    };
-
-    // Function to update button states
-    const updateButtonStates = () => {
-        prevBtn.disabled = currentPosition === 0;
-        nextBtn.disabled = currentPosition === maxScrollPosition;
-    };
-
-    // Function to move the carousel
-    const moveCarousel = () => {
-        testimonialContainer.style.transform = `translateX(-${cardWidth * currentPosition}px)`;
-        updateButtonStates();
-    };
-
-    // Initial dimensions and button state update
-    updateDimensions();
-    updateButtonStates();
-
-    // Click event for next button
-    nextBtn.addEventListener('click', () => {
-        if (currentPosition < maxScrollPosition) {
-            currentPosition++;
-        } else {
-            // Reset to the initial position if we're at the end
-            currentPosition = 0;
-        }
-        moveCarousel();
-    });
-
-    // Click event for previous button
-    prevBtn.addEventListener('click', () => {
-        if (currentPosition > 0) {
-            currentPosition--;
-        } else {
-            return;
-        }
-        moveCarousel();
-    });
-
-    // Window resize event listener to recalculate dimensions
-    window.addEventListener('resize', () => {
-        // Update dimensions on resize
-        updateDimensions();
-
-        // Adjust the carousel position to reflect the new dimensions
-        moveCarousel();
-    });
-});
-
-
-
-
-
-
-// Function to handle button click
-function handleButtonClick(event) {
-    // Get the container element
-    const container = document.querySelector('#servicesCardContainer');
-
-    // Get all elements with the class 'serviceBtn'
-    const buttons = document.querySelectorAll('.serviceBtn');
-
-    // Loop through the buttons to remove the 'servicesActiveBtn' class
-    buttons.forEach(button => {
-        button.classList.remove('servicesActiveBtn');
-    });
-
-    // Add the 'servicesActiveBtn' class to the clicked button
-    const clickedButton = event.currentTarget;
-    clickedButton.classList.add('servicesActiveBtn');
-
-    // Check the data-val attribute and adjust the container's transform property
-    if (clickedButton.getAttribute('data-val') === 'mt') {
-        container.style.transform = 'translateX(calc(-100%))'; // Adjust as needed
-    } else {
-        container.style.transform = 'translateX(0)';
-    }
-}
-
-// Attach event listeners to all buttons with the class 'serviceBtn'
-document.querySelectorAll('.serviceBtn').forEach(button => {
-    button.addEventListener('click', handleButtonClick);
-});
-
-
-
-
-
-
-
-
-document.querySelectorAll('.faqHeader').forEach(header => {
-    header.addEventListener('click', () => {
-        const content = header.nextElementSibling; // Get the faqContent div
-        const isOpen = content.classList.contains('open');
-
-        // Close all open FAQ contents
-        document.querySelectorAll('.faqContent').forEach(c => {
-            c.classList.remove('open');
-        });
-        document.querySelectorAll('.faqHeader').forEach(h => {
-            h.classList.remove('open');
-        });
-
-        // If this was not already open, open it
-        if (!isOpen) {
-            content.classList.add('open');
-            header.classList.add('open');
-        }
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-document.querySelector('#mtCountryDropDown').addEventListener('dropdownChange', () => {
-    console.log('hey')
-    updateCurrencySymbol('mtCountryDropDown', 'mt')
-    updateApproxValueMt(widgetData.ibr)
-})
-// document.querySelector('#mtCountryDropDown').addEventListener('dropdownFirstItemSelected', function(event) {
-//     updateApproxValueMt(widgetData.ibr)
-// });
-
-
-function updateApproxValueMt(data) {
-    if (!data) return;
-
-    // Get the selected item from the dropdown
-    const selectedItemElement = getSelectedDropdownItemElement('mtCountryDropDown');
-    if (selectedItemElement) {
-        // Get the currency attribute from the selected item
-        const currency = selectedItemElement.getAttribute('currency')?.toUpperCase(); // Ensure currency code is uppercase
-
-        // Ensure the currency exists in the data
-        if (!currency || !data[currency] || !data[currency]['MT'] || !data[currency]['MT']['AD2']) {
-            console.error("Invalid currency or data format");
-            return;
-        }
-
-        let amountField = document.querySelector('#widgetAmountMt');
-        let amountText = amountField.value.trim();
-
-        // If the input is empty, default to 0
-        if (amountText === "") {
-            amountText = "0";
-        }
-
-        // Remove any non-numeric characters and parse the amount
-        const amount = parseFloat(amountText.replace(/[^\d.]/g, ''));
-
-        const approxVal = document.querySelector('.approxValMt');
-        const approxAmnt = data[currency]['MT']['AD2'] * amount;
-        // Handle invalid parsing case
-        if (isNaN(amount)) {
-            console.error("Invalid amount entered");
-            approxVal.textContent = '0';
-            return;
-        }
-
-
-
-        // Limit the calculated value to 2 decimal places
-        const limitedAmount = approxAmnt.toFixed(0);
-
-        // Display the formatted approximate value
-        approxValueMt = limitedAmount
-
-
-
-        let container = document.querySelector('#widgetMtInputContainer')
-        if (Number(approxValueMt) > Number(maximumMtValue)) {
-        console.log(Number(approxValueMt), Number(maximumMtValue))
-        insertAlertBelowElement(container, 'High-roller alert! Your total Forex value is greater than $250,000, which is the maximum amount a single person is allowed to carry/remit by the RBI.');
-        activeGetRatesBtn(false,'mt')
-        return
-        } else {
-        activeGetRatesBtn(true,'mt')
-        removeAlertBelowElement(container)
-        }
-        
-        if (Number(approxValueMt)<Number(minimumMtValue)) {
-
-        insertAlertBelowElement(container, 'Please enter a minimum amount of USD 250 or its equivalent')
-        activeGetRatesBtn(false,'mt')
-        return
-        }else {
-            activeGetRatesBtn(true,'mt')
-        removeAlertBelowElement(container)
-        }
-
-
-        
-        approxVal.textContent ='₹ '+  formatIndianCurrency(limitedAmount);
-    }
-}
-
-
-document.querySelector('#widgetAmountMt').addEventListener('input', () => {
-
-    const amountField = document.querySelector('#widgetAmountMt');
-    let amountText = amountField.value.trim();
-
-    // Assume the currency symbol is the first part, followed by a space
-    const spaceIndex = amountText.indexOf(' ');
-
-
-    // Extract the numeric part after the currency symbol
-    const numericPart = amountText.substring(spaceIndex + 1).trim();
-
-    // Remove any non-numeric characters from the numeric part (keeping the decimal point if present)
-    const cleanedNumericPart = numericPart.replace(/[^0-9.]/g, '');
-
-    // Update the input field with the cleaned value, adding back the currency symbol
-    const currencySymbol = amountText.slice(0, spaceIndex + 1); // Preserve the currency symbol
-    amountField.value = `${currencySymbol}${cleanedNumericPart || ''}`; // Ensure the currency symbol is preserved even if numeric part is cleared
-
-
-    // Call the function to update the approximate value based on the cleaned input
-    updateApproxValueMt(widgetData.ibr);
-});
 
 
 
@@ -1031,19 +610,7 @@ function updateCurrencySymbol(dropdownId, type) {
 
     if (selectedItemElement) {
         let newCurrencyCode;
-        if (type === 'mt') {
-            newCurrencyCode = selectedItemElement.getAttribute('currency').toUpperCase();
-            let countryName = selectedItemElement.getAttribute('value');
-
-            if (newCurrencyCode === 'USD' && countryName !== 'united states') {
-                document.querySelector('#mtCountryAlert').style.display = 'flex'
-                document.querySelector('#mtCountryAlertText').textContent = `All transfers to ${capitalizeFirstLetter(countryName)} are processed in US Dollars. Please enter the equivalent amount in USD.`
-            } else {
-                document.querySelector('#mtCountryAlert').style.display = 'none'
-
-            }
-            mtCurrency = newCurrencyCode
-        } else if (type === 'fx') {
+        if (type === 'fx') {
             newCurrencyCode = selectedItemElement.getAttribute('value').toUpperCase();
         }
 

@@ -14,6 +14,7 @@ function insertAlertBelowElement(targetElement, alertContent) {
     // Check if an alert already exists below the target element
     const existingAlert = targetElement.nextElementSibling;
     if (existingAlert && existingAlert.classList.contains('custom-alert')) {
+        existingAlert.textContent = alertContent; // Update existing alert text
         if (!isElementInViewport(existingAlert)) {
             scrollToElement(existingAlert);
         }
@@ -35,10 +36,8 @@ function insertAlertBelowElement(targetElement, alertContent) {
     // Insert the alert element directly below the target element
     targetElement.insertAdjacentElement('afterend', alertSpan);
 
-    // Only scroll if the new alert is not visible in the viewport
-    if (!isElementInViewport(alertSpan)) {
-        scrollToElement(alertSpan);
-    }
+    // Always scroll to the new alert
+    scrollToElement(alertSpan);
 }
 
 function scrollToElement(element) {

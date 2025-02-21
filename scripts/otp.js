@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentInput.value = currentInput.value.slice(0, 1);
             }
 
-            currentInput.style.backgroundColor = 'rgba(13, 164, 134, 1)'; // Set background opacity to 1
+            currentInput.style.backgroundColor = 'var(--color-primary)'; // Set background opacity to 1
 
             // Move to the next input if any
             if (currentInput.value !== '' && index < inputs.length - 1) {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('keydown', (event) => {
             if (event.key === 'Backspace') {
                 const currentInput = event.target;
-                currentInput.style.backgroundColor = 'rgb(13, 164, 134, 0.1)'; // Reset background opacity
+                currentInput.style.backgroundColor = 'var(--color-primary-10)'; // Reset background opacity
 
                 if (currentInput.value === '' && index > 0) {
                     inputs[index - 1].focus();

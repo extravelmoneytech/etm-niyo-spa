@@ -5,14 +5,17 @@
 
 
 $fold = "../";
+$title='Login';
 
 include $fold . 'includesv2/head.php';
 
 $loginPage = true;
+$newHeader = true;
+
 ?>
 
 <body class="w-full  flex items-center justify-center">
-    <div class="flex flex-col items-center justify-center relative bg-white max-w-[800px] w-full">
+    <div class="flex flex-col items-center justify-center relative bg-white  w-full">
 
 
 
@@ -23,15 +26,15 @@ $loginPage = true;
             ?>
 
 
-            <section class="px-5 pb-16 pt-8">
-                <div class="flex w-full justify-center items-center">
+            <section class="px-5 pb-16 pt-8 flex flex-col justify-center items-center">
+                <div class="flex w-full justify-center items-center max-w-[800px]">
                     <div class="otpWidget  flex w-full  z-20  bg-white customMd:rounded-xl flex-col "
                         style="display: flex;">
-                        <img class="w-44 hidden md:block" src="<?php echo $fold . 'public/images/logo/ETM logo without tagline.png'; ?>" alt="ETM logo without tagline">
+                        
 
 
                         <div id="sendOtpMain" class="flex flex-col ">
-                            <img class="w-48 mt-4" src="../../public/images/otp-mobile.svg" alt="">
+                            <img class="w-48 mt-4" src="../../public/images/otp-mobile.svg?ver1.0" alt="">
 
                             <span class="text-black text-sm font-semibold mt-6 leading-7">Enter Your Mobile Number</span>
 

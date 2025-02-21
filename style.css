@@ -3,16 +3,19 @@
 @tailwind utilities;
 
 :root {
-    /* Base color variables */
-    --color-primary: #0DA486;
-    --color-primary-80: #0DA486CC; /* 80% opacity */
-    --color-primary-60: #0DA48699; /* 60% opacity */
-    --color-primary-40: #0DA48666; /* 40% opacity */
-    --color-primary-20: #0DA48633; /* 20% opacity */
-    --color-primary-10: #0DA4861A; /* 10% opacity */
-    --color-primary-5: #0DA4860D;  /* 5% opacity */
+  /* Base color variables */
+  --color-primary: #005B9B;
+  --color-primary-80: rgba(0, 91, 155, 0.80); /* 80% opacity */
+  --color-primary-60: rgba(0, 91, 155, 0.60); /* 60% opacity */
+  --color-primary-40: rgba(0, 91, 155, 0.40); /* 40% opacity */
+  --color-primary-20: rgba(0, 91, 155, 0.20); /* 20% opacity */
+  --color-primary-10: rgba(0, 91, 155, 0.10); /* 10% opacity */
+  --color-primary-5: rgba(0, 91, 155, 0.05);  /* 5% opacity */
+
+  /* Gradient variables */
+  --button-gradient: #EF6614;
+  --text-gradient: linear-gradient(90deg, #2F80ED -12.29%, #50BEE1 112.78%);
   
-    /* Gradient variables */
-    --button-gradient: linear-gradient(0deg, #0E1226 0%, #0E1226 100%);
-    --text-gradient: linear-gradient(84deg, var(--color-primary) -26.8%, var(--color-primary-60) 74.05%);
-  }
+  --custom-gradient: linear-gradient(90deg, #2F80ED -12.29%, #50BEE1 112.78%);
+
+}

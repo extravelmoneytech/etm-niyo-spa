@@ -20,7 +20,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-PVCSFZ2');</script>
 <!-- End Google Tag Manager -->
     
-    <title><?php echo($title); ?></title>
+    <title>Book Foreign Currency & Forex Card Online - EaseMyTrip.com</title>
     <meta name="description" content="<?php echo($description); ?>" />
     
     
@@ -29,7 +29,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet">
-        
+         <link rel="icon" href="/public/images/favIcon.png" type="image/png">
     <link rel="canonical" href="<?php echo($ogurl); ?>" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:type" content="<?php echo($ogtype); ?>" />
@@ -37,8 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <meta property="og:description" content="<?php echo($description); ?>" />
 <meta property="og:url" content="<?php echo($ogurl); ?>" />
 <meta property="og:site_name" content="ExTravelMoney" />
-<meta property="og:image" content="http://www.extravelmoney.com/images/extravelmoney_dp.png" />    
-    
+<meta property="og:image" content="http://www.extravelmoney.com/easemytrip.extravelmoney.com/public/images/favIcon.png" /> 
     <!-- Local Stylesheets with PHP $fold -->
     <link rel="stylesheet" href="<?php echo $fold . 'src/output.css?ver=2.1'; ?>">
     <link rel="stylesheet" href="<?php echo $fold . 'stylesv2/extraStyles.css?ver=1.6'; ?>">
